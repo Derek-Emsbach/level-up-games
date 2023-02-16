@@ -69,6 +69,8 @@
 
 * `user_id` references `users` table
 
+# Bonus Features
+
 ## `friends`
 
 | column name   | data type | details                        |
