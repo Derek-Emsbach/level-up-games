@@ -12,19 +12,20 @@
 
 ## `games`
 
-| column name | data type | details                      |
-|-------------|-----------|------------------------------|
-| id          | integer   | not null, primary key        |
-| user_id     | integer   | not null, foreign key (users)|
-| title       | string    | not null                     |
-| description | string    | not null                     |
-| release_date| integer   | not null                     |
-| developer   | integer   | not null                     |
-| publisher   | integer   | not null                     |
-| genre       | integer   | not null                     |
-| platform    | integer   | not null                     |
-| created_at  | datetime  | not null                     |
-| updated_at  | datetime  | not null                     |
+| column name  | data type | details                      |
+|--------------|-----------|------------------------------|
+| id           | integer   | not null, primary key        |
+| user_id      | integer   | not null, foreign key (users)|
+| title        | string    | not null                     |
+| preview_image| image     | not null                     |
+| description  | string    | not null                     |
+| release_date | date      | not null                     |
+| developer    | string    | not null                     |
+| publisher    | string    | not null                     |
+| genre        | string    | not null                     |
+| platform     | string    | not null                     |
+| created_at   | datetime  | not null                     |
+| updated_at   | datetime  | not null                     |
 
 * `user_id` references `users` table
 
@@ -57,13 +58,13 @@
 * `review_id` references `reviews` table
 * `user_id` references `users` table
 
-## `games_list`
+## `lists`
 
 | column name   | data type | details                        |
 |---------------|-----------|--------------------------------|
 | id            | integer   | not null, primary key          |
 | user_id       | integer   | not null, foreign key (Users)  |
-| list_name     | integer   | not null                       |
+| list_name     | string    | not null                       |
 | created_at    | datetime  | not null                       |
 | updated_at    | datetime  | not null                       |
 
