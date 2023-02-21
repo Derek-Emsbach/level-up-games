@@ -1,5 +1,8 @@
 # **Database Schema**
 
+![image](https://user-images.githubusercontent.com/37425403/220238912-7a34cd12-30ca-4efd-963b-2a51e047703f.png)
+
+
 ## `users`
 
 | column name | data type | details                   |
