@@ -21,17 +21,24 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+    <>
+      <ul>
+        <li>
+          <strong>User Id</strong> {userId}
+        </li>
+        <li>
+          <strong>Username</strong> {user.username}
+        </li>
+        {/* <li>
+          <strong>{user.games[0].title}</strong>
+        </li> */}
+            {/* {user.games.map(game =>
+                <li key={game.id}>
+                    <h4>{game.title}</h4>
+                </li>)} */}
+      </ul>
+
+    </>
   );
 }
 export default User;

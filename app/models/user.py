@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
 
     # Related Data
     games = db.relationship("Game", back_populates='user')
+    lists = db.relationship("List", back_populates='user')
 
     @property
     def password(self):
@@ -32,8 +33,15 @@ class User(db.Model, UserMixin):
         return f"<user id: {self.id}, username: {self.username}, email: {self.email}>"
 
     def to_dict(self):
+        # user_games = []
+
+        # for game in self.games:
+        #     user_games.append(game.to_dict())
+
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'games' : [game.to_dict() for game in self.games],
+            'lists' : self.lists
         }

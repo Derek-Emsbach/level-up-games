@@ -31,9 +31,9 @@ def user(id):
     Query for a user by id and returns that user in a dictionary
     """
     user = User.query.get(id)
-    print("="*50)
-    print(user.games)
-    print("="*50)
+    print("*" * 200)
+    print(user.to_dict())
+    print("*" * 50)
     return user.to_dict()
 
 # Will need tro import ProfileForm after creating it

@@ -1,4 +1,4 @@
-"""empty message
+"""create_games_table
 
 Revision ID: 8e8ba41881de
 Revises: ffdc0a98111c
