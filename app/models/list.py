@@ -16,10 +16,10 @@ class List(db.Model):
     list_of_games = db.relationship("Game", secondary=game_lists, back_populates='game_in_lists', cascade='all, delete')
 
 
-def to_dict(self):
-        return {
-            'id': self.id,
-            'userId': self.user_id,
-            'listName': self.list_name,
-            'listOfGames': [game.to_dict() for game in self.list_of_games]
-        }
+    def to_dict(self):
+            return {
+                'id': self.id,
+                'userId': self.user_id,
+                'listName': self.list_name,
+                'listOfGames': [game.to_dict() for game in self.list_of_games]
+            }

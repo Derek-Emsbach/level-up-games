@@ -23,7 +23,7 @@ def seed():
         undo_users()
     seed_users()
     seed_games()
-    seed_lists
+    seed_lists()
     # Add other seed functions here
 
 
