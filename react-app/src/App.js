@@ -8,6 +8,8 @@ import UsersList from './components/User/UsersList';
 import User from './components/User/User';
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import CreateGame from "./components/CreateGame";
+import AllGames from "./components/Games/AllGames";
 
 function App() {
 	const dispatch = useDispatch();
@@ -22,7 +24,7 @@ function App() {
 			{isLoaded && (
 				<Switch>
 					<ProtectedRoute path="/" exact={true}>
-						<h1>My Home Page</h1>
+						<AllGames />
 					</ProtectedRoute>
 					<Route path="/login">
 						<LoginFormPage />
@@ -36,6 +38,12 @@ function App() {
 					<ProtectedRoute path="/users/:userId" exact={true}>
 						<User />
 					</ProtectedRoute>
+					<ProtectedRoute path="/game" exact={true}>
+						<CreateGame />
+					</ProtectedRoute>
+					<Route>
+						<h1>Temporary 404</h1>
+					</Route>
 				</Switch>
 			)}
 		</>
