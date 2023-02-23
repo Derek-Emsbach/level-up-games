@@ -1,11 +1,9 @@
-const defaultState = {};
+const LOAD_GAMES = "games/LOAD_GAMES";
 
-const GET_GAMES = "games/GET_GAMES";
-
-const getAllGames = (games) => {
+const loadGames = (games) => {
 	return {
-		type: GET_GAMES,
-		games
+		type: LOAD_GAMES,
+		payload: games,
 	};
 };
 
@@ -14,17 +12,32 @@ export const getAllGamesThunk = () => async (dispatch) => {
 
 	if (res.ok) {
 		const games = await res.json();
-
-		dispatch(getAllGames(games));
+		dispatch(loadGames(games));
+        return games
 	}
 };
 
+const defaultState = {};
+
 const gameReducer = (state = defaultState, action) => {
-	const newState = { ...state };
+	let newState = { ...state };
 
 	switch (action.type) {
-		case GET_GAMES:
-			return { ...newState, ...action.payload };
+        // case LOAD_GAMES:
+        //     action.game.forEach((ele) => {
+        //         console.log(ele, "ele in reducer")
+        //         newState[ele.id] = ele
+        //       })
+        //       return newState
+		case LOAD_GAMES:
+		    return { ...newState, ...action.payload };
+		// case LOAD_GAMES: {
+		// 	action.games.forEach((game) => {
+		// 		newState[game.id] = game;
+		// 	});
+
+		// 	return newState;
+		// }
 		default:
 			return state;
 	}
