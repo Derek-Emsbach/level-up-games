@@ -24,7 +24,8 @@ def seed_lists():
 # it will reset the primary keys for you as well.
 def undo_lists():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.lists RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.lists RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM lists")
         db.session.execute("DELETE FROM game_lists")

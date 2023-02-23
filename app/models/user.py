@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     games = db.relationship("Game", back_populates='user')
     lists = db.relationship("List", back_populates='user')
 
+
     @property
     def password(self):
         return self.hashed_password
@@ -37,11 +38,13 @@ class User(db.Model, UserMixin):
 
         # for game in self.games:
         #     user_games.append(game.to_dict())
-
+        # print('*\n' * 50)
+        # print([list.to_dict() for list in self.lists])
+        # print('*\n' * 50)
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
             'games' : [game.to_dict() for game in self.games],
-            'lists' : self.lists
+            'lists' : [list.to_dict() for list in self.lists]
         }

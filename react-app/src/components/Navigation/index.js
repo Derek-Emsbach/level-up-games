@@ -20,6 +20,9 @@ function Navigation({ isLoaded }){
 			<li>
 				<NavLink exact to="/users">Users</NavLink>
 			</li>
+			<li>
+				<NavLink exact to="/game">Add Game</NavLink>
+			</li>
 		</ul>
 	);
 }

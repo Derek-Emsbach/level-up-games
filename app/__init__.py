@@ -7,6 +7,7 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.game_routes import game_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -28,6 +29,7 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(game_routes, url_prefix='/api/games')
 db.init_app(app)
 Migrate(app, db)
 
@@ -47,7 +49,10 @@ def https_redirect():
             url = request.url.replace('http://', 'https://', 1)
             code = 301
             return redirect(url, code=code)
-
+    # Development code ONLY
+    # if ('favicon.ico' in request.url):
+    #     url = request.url.replace("http://localhost:5000/", "http://localhost:3000/", 1)
+    #     return redirect(url, code=301)
 
 @app.after_request
 def inject_csrf_token(response):
