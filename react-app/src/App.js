@@ -23,9 +23,9 @@ function App() {
 			<Navigation isLoaded={isLoaded} />
 			{isLoaded && (
 				<Switch>
-					<ProtectedRoute path="/" exact={true}>
+					<Route path="/" exact={true}>
 						<AllGames />
-					</ProtectedRoute>
+					</Route>
 					<Route path="/login">
 						<LoginFormPage />
 					</Route>
