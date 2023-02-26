@@ -1,3 +1,5 @@
+const defaultState = {};
+
 const LOAD_GAMES = "games/LOAD_GAMES";
 
 const loadGames = (games) => {
@@ -13,31 +15,34 @@ export const getAllGamesThunk = () => async (dispatch) => {
 	if (res.ok) {
 		const games = await res.json();
 		dispatch(loadGames(games));
-        return games
+		return games;
 	}
 };
 
-const defaultState = {};
+export const createGameThunk = (data) => async (dispatch) => {
+	const gameData = JSON.stringify(data);
+
+	const res = await fetch("/api/games", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: gameData,
+	});
+
+	if (res.ok) {
+		const newGame = await res.json();
+		dispatch(loadGames(newGame));
+	}
+};
 
 const gameReducer = (state = defaultState, action) => {
 	let newState = { ...state };
 
 	switch (action.type) {
-        // case LOAD_GAMES:
-        //     action.game.forEach((ele) => {
-        //         console.log(ele, "ele in reducer")
-        //         newState[ele.id] = ele
-        //       })
-        //       return newState
 		case LOAD_GAMES:
-		    return { ...newState, ...action.payload };
-		// case LOAD_GAMES: {
-		// 	action.games.forEach((game) => {
-		// 		newState[game.id] = game;
-		// 	});
+			return { ...newState, ...action.payload };
 
-		// 	return newState;
-		// }
 		default:
 			return state;
 	}

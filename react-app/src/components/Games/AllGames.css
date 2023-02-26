@@ -1,0 +1,15 @@
+
+.image-container {
+    height: 250px;
+    width: 250px;
+    border-radius: 10px;
+    list-style: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-image {
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+}

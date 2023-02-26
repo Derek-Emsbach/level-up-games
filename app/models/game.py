@@ -13,7 +13,7 @@ class Game(db.Model):
     title = db.Column(db.String(255), nullable=False)
     preview_image = db.Column(db.String(1000), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
-    release_date = db.Column(db.Date, nullable=False)
+    # release_date = db.Column(db.Date, nullable=True)
     developer = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(255), nullable=False)
     platform = db.Column(db.String(255), nullable=False)
@@ -24,7 +24,9 @@ class Game(db.Model):
         "List", secondary=game_lists, back_populates='list_of_games', cascade='all, delete')
 
     def __repr__(self):
-        return f"<game id: {self.id}, user_id: {self.user_id}, title: {self.title}, preview_image: {self.preview_image}, description: {self.description}, release_date: {self.release_date}, developer: {self.developer}, genre: {self.genre}, platform: {self.platform}>"
+        # Removed 
+        # release_date: {self.release_date},
+        return f"<Game id: {self.id}, user_id: {self.user_id}, title: {self.title}, preview_image: {self.preview_image}, description: {self.description}, developer: {self.developer}, genre: {self.genre}, platform: {self.platform}>"
 
     def to_dict(self):
         return {
@@ -33,7 +35,7 @@ class Game(db.Model):
             'title': self.title,
             'previewImage': self.preview_image,
             'description': self.description,
-            'releaseDate': self.release_date,
+            # 'releaseDate': self.release_date,
             'developer': self.developer,
             'genre': self.genre,
             'platform': self.platform,
