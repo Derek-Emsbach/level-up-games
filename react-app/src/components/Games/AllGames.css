@@ -3,6 +3,11 @@ h1 {
    justify-content: center;
 }
 
+p {
+    display: flex;
+    justify-content: center;
+}
+
 .image-container {
     height: 250px;
     width: 250px;

@@ -8,10 +8,10 @@ import UsersList from "./components/User/UsersList";
 import User from "./components/User/User";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import CreateGame from "./components/CreateGame";
 import AllGames from "./components/Games/AllGames";
 import GameDetail from "./components/Games/GameDetail";
-import EditGameForm from "./components/EditGameForm";
+import CreateGame from "./components/Games/CreateGame";
+import EditGameForm from "./components/Games/EditGameForm";
 
 function App() {
 	const dispatch = useDispatch();
