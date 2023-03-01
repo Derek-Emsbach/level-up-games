@@ -40,7 +40,7 @@ export const getSingleGame = (gameId) => async (dispatch) => {
 
 	if (response.ok) {
 		const game = await response.json();
-		dispatch(loadOneGame(game));
+		dispatch(loadGames(game));
 		return game;
 	}
 };

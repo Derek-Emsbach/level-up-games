@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .games import seed_games, undo_games
 from .lists import seed_lists, undo_lists
+from .reviews import seed_reviews, undo_reviews
 
 from app.models.db import db, environment, SCHEMA
 
@@ -20,9 +21,11 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_lists()
         undo_games()
+        undo_reviews()
         undo_users()
     seed_users()
     seed_games()
+    seed_reviews()
     seed_lists()
     # Add other seed functions here
 
@@ -32,5 +35,6 @@ def seed():
 def undo():
     undo_lists()
     undo_games()
+    undo_reviews()
     undo_users()
     # Add other undo functions here

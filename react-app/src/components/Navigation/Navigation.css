@@ -1,7 +1,32 @@
+#navigation-bar {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  margin: 10px 10px;
+  gap: 20px;
+}
+
 .profile-dropdown {
   position: absolute;
 }
 
 .hidden {
   display: none;
+}
+
+.left_side {
+  display: flex;
+  flex: 1;
+  height: 48px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.right_side {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
 }

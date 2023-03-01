@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
 
     # Related Data
     games = db.relationship("Game", back_populates='user', cascade='all, delete')
+    reviews = db.relationship("Review", back_populates='user')
     lists = db.relationship("List", back_populates='user', cascade='all, delete')
 
 
