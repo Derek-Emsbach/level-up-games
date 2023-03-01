@@ -28,30 +28,45 @@ def create_new_game():
 
     return {new_game.id: new_game.to_dict()}
 
-
-# @game_routes.route('', methods=["PATCH", "PUT"])
-# def edit_tweet():
-#     tweet_data = request.json
-
-#     tweet = Tweet.query.get(tweet_data['id'])
-
-#     tweet.text = tweet_data['text']
-
-#     db.session.commit()
-
-#     return {tweet.id: tweet.to_dict()}
+@game_routes.route('/<int:id>')
+def get_game(id):
+    game = Game.query.get(id)
+    return game.to_dict()
 
 
-# @game_routes.route('/<int:id>', methods=["DELETE"])
-# def delete_tweet(id):
-#     data = request.json
 
-#     if data["user_id"] != current_user.id:
-#         return {"error": "You are not authorized to delete this tweet"}, 401
 
-#     tweet = Tweet.query.get(id)
 
-#     db.session.delete(tweet)
-#     db.session.commit()
+@game_routes.route('/<int:id>', methods=["PATCH", "PUT"])
+def edit_game(id):
+    game_data = request.json
 
-#     return {"msg": "Successfully deleted"}
+    if game_data["userId"] != current_user.id:
+        return {"error": "You are not authorized to delete this tweet"}, 401
+
+    game = Game.query.get(id)
+
+    game.title = game_data['title']
+    game.preview_image = game_data['previewImage']
+    game.genre = game_data['genre']
+    game.developer = game_data['developer']
+    game.platform = game_data['platform']
+
+    db.session.commit()
+
+    return {game.id: game.to_dict()}
+
+
+@game_routes.route('/<int:id>', methods=["DELETE"])
+def delete_game(id):
+    data = request.json
+
+    if data["user_id"] != current_user.id:
+        return {"error": "You are not authorized to delete this tweet"}, 401
+
+    game = Game.query.get(id)
+
+    db.session.delete(game)
+    db.session.commit()
+
+    return {"msg": "Successfully deleted"}

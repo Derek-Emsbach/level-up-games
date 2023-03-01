@@ -10,6 +10,8 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CreateGame from "./components/CreateGame";
 import AllGames from "./components/Games/AllGames";
+// import GameDetail from "./components/Games/SingleGame"
+import EditGameForm from "./components/EditGameForm";
 
 function App() {
 	const dispatch = useDispatch();
@@ -38,8 +40,14 @@ function App() {
 					<ProtectedRoute path="/users/:userId" exact={true}>
 						<User />
 					</ProtectedRoute>
-					<ProtectedRoute path="/game" exact={true}>
+					<ProtectedRoute path="/gameform" exact={true}>
 						<CreateGame />
+					</ProtectedRoute>
+					{/* <ProtectedRoute path="/games/:gameId" exact={true}>
+						<GameDetail />
+					</ProtectedRoute> */}
+					<ProtectedRoute path="/games/:gameId/update" exact={true}>
+						<EditGameForm />
 					</ProtectedRoute>
 					<Route>
 						<h1>Temporary 404</h1>

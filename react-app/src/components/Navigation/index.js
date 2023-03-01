@@ -21,7 +21,7 @@ function Navigation({ isLoaded }){
 				<NavLink exact to="/users">Users</NavLink>
 			</li>
 			<li>
-				<NavLink exact to="/game">Add Game</NavLink>
+				<NavLink exact to="/gameform">Add Game</NavLink>
 			</li>
 		</ul>
 	);
