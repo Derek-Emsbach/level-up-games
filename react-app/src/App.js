@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/User/UsersList';
-import User from './components/User/User';
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import UsersList from "./components/User/UsersList";
+import User from "./components/User/User";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CreateGame from "./components/CreateGame";
 import AllGames from "./components/Games/AllGames";
-// import GameDetail from "./components/Games/SingleGame"
+import GameDetail from "./components/Games/GameDetail";
 import EditGameForm from "./components/EditGameForm";
 
 function App() {
@@ -43,9 +43,9 @@ function App() {
 					<ProtectedRoute path="/gameform" exact={true}>
 						<CreateGame />
 					</ProtectedRoute>
-					{/* <ProtectedRoute path="/games/:gameId" exact={true}>
+					<ProtectedRoute path="/games/:gameId" exact={true}>
 						<GameDetail />
-					</ProtectedRoute> */}
+					</ProtectedRoute>
 					<ProtectedRoute path="/games/:gameId/update" exact={true}>
 						<EditGameForm />
 					</ProtectedRoute>

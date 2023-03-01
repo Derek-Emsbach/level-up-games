@@ -1,16 +1,18 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProfileButton from "./ProfileButton";
+import "./Navigation.css";
 
-function Navigation({ isLoaded }){
-	const sessionUser = useSelector(state => state.session.user);
+function Navigation({ isLoaded }) {
+	const sessionUser = useSelector((state) => state.session.user);
 
 	return (
 		<ul>
 			<li>
-				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/">
+					Home
+				</NavLink>
 			</li>
 			{isLoaded && (
 				<li>
@@ -18,10 +20,14 @@ function Navigation({ isLoaded }){
 				</li>
 			)}
 			<li>
-				<NavLink exact to="/users">Users</NavLink>
+				<NavLink exact to="/users">
+					Users
+				</NavLink>
 			</li>
 			<li>
-				<NavLink exact to="/gameform">Add Game</NavLink>
+				<NavLink exact to="/gameform">
+					Add Game
+				</NavLink>
 			</li>
 		</ul>
 	);

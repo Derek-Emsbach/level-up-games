@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { deleteGameThunk } from "../../store/games";
 import "./AllGames.css";
 
 const SingleGame = ({
 	game: { id, userId, title, previewImage, genre, developer, platform },
 }) => {
-	// const {showEdit, setShowEdit} = useState(false)
+
 	const history = useHistory();
 	const dispatch = useDispatch();
 
@@ -20,10 +20,6 @@ const SingleGame = ({
 		dispatch(deleteGameThunk({ id, user_id: userId }));
 	};
 
-	const gameDetails = () => {
-		history.push(`games`);
-	};
-
 	return (
 		<div className="game-container">
 			<h3 className="game-title">{title}</h3>
@@ -31,11 +27,13 @@ const SingleGame = ({
 			<div>Rating: TBD</div>
 
 			<div className="img-container">
-				<img
-					className="game-image"
-					alt={`Cover art from ${title}`}
-					src={previewImage}
-				></img>
+				<Link key={id} to={`/games/${id}`}>
+					<img
+						className="game-image"
+						alt={`Cover art from ${title}`}
+						src={previewImage}
+					></img>
+				</Link>
 			</div>
 			<div>{developer}</div>
 			<div>{genre}</div>
