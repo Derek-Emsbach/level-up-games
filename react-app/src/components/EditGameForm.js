@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams } from "react-router-dom";
 import { editGameThunk } from "../store/games";
 
 const EditGameForm = () => {
-	const history = useHistory()
-	const dispatch = useDispatch()
-    const { gameId } = useParams()
-    const games = useSelector((state) => state.games);
-    const userId = useSelector((state) => state.session.user.id);
-    const specificGame = games[gameId]
+	const history = useHistory();
+	const dispatch = useDispatch();
+	const { gameId } = useParams();
+	const games = useSelector((state) => state.games);
+	const userId = useSelector((state) => state.session.user.id);
+	const specificGame = games[gameId];
 	const [tooLong, setTooLong] = useState(false);
-    const [title, setTitle] = useState(specificGame.title);
+	const [title, setTitle] = useState(specificGame.title);
 	const [previewImage, setPreviewImage] = useState(specificGame.previewImage);
 	const [description, setDescription] = useState(specificGame.description);
 	// const [releaseDate, setReleaseDate] = useState("releaseDate");
 	const [developer, setDeveloper] = useState(specificGame.developer);
 	const [genre, setGenre] = useState(specificGame.genre);
 	const [platform, setPlatform] = useState(specificGame.platform);
-    // const [errors, setErrors] = useState([]);
+	// const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
 		if (setDescription.length > 1000) {
@@ -28,32 +28,32 @@ const EditGameForm = () => {
 		}
 	}, [setDescription.length]);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        // setErrors([]);
-        const payload = {
-            userId,
-            title,
-            previewImage,
-            description,
-            // release_date: releaseDate,
-            developer,
-            genre,
-            platform,
-        };
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		// setErrors([]);
+		const payload = {
+			userId,
+			title,
+			previewImage,
+			description,
+			// release_date: releaseDate,
+			developer,
+			genre,
+			platform,
+		};
 
-        dispatch(editGameThunk(gameId, payload));
-        // if (data.errors) {
-        //     setErrors([...Object.values(data.errors)]);
-        //   } else {
-        history.push(`/`);
-        //   }
-        }
+		dispatch(editGameThunk(gameId, payload));
+		// if (data.errors) {
+		//     setErrors([...Object.values(data.errors)]);
+		//   } else {
+		history.push(`/`);
+		//   }
+	};
 
 	return (
 		<>
 			<h3>Edit Game Details</h3>
-            {/* {!!errors.length && (
+			{/* {!!errors.length && (
           <ul>
             {errors.map((error, idx) => (
               <li className="edit-errors" key={idx}>
@@ -115,6 +115,5 @@ const EditGameForm = () => {
 		</>
 	);
 };
-
 
 export default EditGameForm;

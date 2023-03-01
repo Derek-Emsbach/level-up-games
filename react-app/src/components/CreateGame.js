@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createGameThunk } from "../store/games";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const CreateGame = () => {
-	const history = useHistory()
-	const dispatch = useDispatch()
+	const history = useHistory();
+	const dispatch = useDispatch();
 	const [title, setTitle] = useState("");
 	const [previewImage, setPreviewImage] = useState("");
 	const [description, setDescription] = useState("");
@@ -36,8 +36,8 @@ const CreateGame = () => {
 			platform,
 		};
 
-		dispatch(createGameThunk(data))
-		history.push('/')
+		dispatch(createGameThunk(data));
+		history.push("/");
 	};
 
 	return (

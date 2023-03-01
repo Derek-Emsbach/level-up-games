@@ -1,6 +1,7 @@
 const defaultState = {};
 
 const LOAD_GAMES = "games/LOAD_GAMES";
+const LOAD_ONE_GAME = "games/LOAD_ONE_GAME"
 const DELETE_GAME = "games/DELETE_GAME";
 
 const loadGames = (games) => {
@@ -9,6 +10,13 @@ const loadGames = (games) => {
 		payload: games,
 	};
 };
+
+const loadOneGame = (games) => {
+	return {
+		type: LOAD_ONE_GAME,
+		payload: games,
+	}
+}
 
 const deleteGame = (payload) => {
 	return {
@@ -27,15 +35,15 @@ export const getAllGamesThunk = () => async (dispatch) => {
 	}
 };
 
-export const getSingleGame = (id) => async (dispatch) => {
-	const response = await fetch(`/api/games/${id}`);
+export const getSingleGame = (gameId) => async (dispatch) => {
+	const response = await fetch(`/api/games/${gameId}`);
 
 	if (response.ok) {
-	  const game = await response.json();
-	  dispatch(loadGames(game));
-	  return game;
+		const game = await response.json();
+		dispatch(loadOneGame(game));
+		return game;
 	}
-  };
+};
 
 export const createGameThunk = (data) => async (dispatch) => {
 	const gameData = JSON.stringify(data);
@@ -93,6 +101,10 @@ const gameReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case LOAD_GAMES:
 			return { ...newState, ...action.payload };
+
+		case LOAD_ONE_GAME:
+			newState[action.payload.id] = action.games
+			return newState
 
 		case DELETE_GAME:
 			delete newState[action.payload];

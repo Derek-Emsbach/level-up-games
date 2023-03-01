@@ -18,7 +18,7 @@ const AllGames = () => {
 			<h1>Homepage</h1>
 			<div className="all-games-container">
 				{games.map((game) => (
-					<SingleGame key={game.id} game={game}/>
+						<SingleGame key={game.id} game={game} />
 				))}
 			</div>
 		</div>
