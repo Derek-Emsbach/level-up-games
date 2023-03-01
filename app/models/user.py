@@ -15,8 +15,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # Related Data
-    games = db.relationship("Game", back_populates='user')
-    lists = db.relationship("List", back_populates='user')
+    games = db.relationship("Game", back_populates='user', cascade='all, delete')
+    lists = db.relationship("List", back_populates='user', cascade='all, delete')
 
 
     @property
@@ -34,13 +34,7 @@ class User(db.Model, UserMixin):
         return f"<user id: {self.id}, username: {self.username}, email: {self.email}>"
 
     def to_dict(self):
-        # user_games = []
 
-        # for game in self.games:
-        #     user_games.append(game.to_dict())
-        # print('*\n' * 50)
-        # print([list.to_dict() for list in self.lists])
-        # print('*\n' * 50)
         return {
             'id': self.id,
             'username': self.username,
