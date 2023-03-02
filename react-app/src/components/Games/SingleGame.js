@@ -5,7 +5,7 @@ import ReviewByGameId from "../Reviews/ReviewByGameId";
 import "./AllGames.css";
 
 const SingleGame = ({
-	game: { id, userId, title, previewImage, genre, developer, platform, reviews },
+	game: { id, userId, title, previewImage, genre, developer, platform },
 }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -19,24 +19,12 @@ const SingleGame = ({
 	const handleDelete = () => {
 		dispatch(deleteGameThunk({ id, user_id: userId }));
 	};
-	console.log({reviews}, "reviews")
 
 	return (
 		<div className="game-container">
 			<h3 className="game-title">{title}</h3>
 			<div>{platform}</div>
-			<div>{reviews}</div>
-			<ReviewByGameId
-				game={{
-					id,
-					userId,
-					title,
-					previewImage,
-					genre,
-					developer,
-					platform,
-				}}
-			/>
+			{/* <ReviewByGameId id={id}/> */}
 
 			<div className="img-container">
 				<Link key={id} to={`/games/${id}`}>

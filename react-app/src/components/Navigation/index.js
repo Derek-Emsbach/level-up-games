@@ -11,7 +11,8 @@ function Navigation({ isLoaded }) {
 		<ul id="navigation-bar">
 			<li className="left_side">
 				<NavLink exact to="/">
-					Home
+					{/* Home */}
+					<img alt="logo" className="home-icon" src="https://thumbs.dreamstime.com/z/level-up-icon-creative-design-157152147.jpg"></img>
 				</NavLink>
 			</li>
 			<li className="left_side">

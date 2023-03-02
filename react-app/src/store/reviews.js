@@ -27,6 +27,16 @@ export const getAllReviewsThunk = () => async (dispatch) => {
 	}
 }
 
+// export const getAllReviewsByGameId = (gameId) => async (dispatch) => {
+//     const response = await fetch(`/api/reviews/${gameId}`);
+
+//     if (response.ok) {
+//       const review = await response.json();
+//       dispatch(loadReviews(review));
+//       return review
+//     }
+//   };
+
 export const createReviewThunk = (data) => async (dispatch) => {
 	const reviewData = JSON.stringify(data);
 
@@ -44,7 +54,7 @@ export const createReviewThunk = (data) => async (dispatch) => {
 	}
 };
 
-export const editGameThunk = (id, data) => async (dispatch) => {
+export const editReviewThunk = (id, data) => async (dispatch) => {
 	const editReview = JSON.stringify(data);
 
 	const res = await fetch(`/api/reviews/${id}`, {
@@ -57,7 +67,7 @@ export const editGameThunk = (id, data) => async (dispatch) => {
 
 	if (res.ok) {
 		const newData = await res.json();
-		dispatch(loadGames(newData));
+		dispatch(loadReviews(newData));
 	}
 };
 
