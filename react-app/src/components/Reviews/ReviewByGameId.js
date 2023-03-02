@@ -1,58 +1,58 @@
-import { useDispatch, useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getAllReviewsThunk, deleteReviewThunk } from "../../store/reviews";
+import {
+	getAllReviewsThunk,
+	deleteReviewThunk,
+	getAllReviewsByGameId,
+} from "../../store/reviews";
 
-const ReviewByGameId = ({
-  id, userId, title, previewImage, genre, developer, platform,
-}) => {
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const { gameId } = useParams()
-  const reviews = useSelector(state =>state.reviews)
-  const sessionUser = useSelector((state) => state.session.user);
+const ReviewByGameId = () => {
+	const history = useHistory();
+	const dispatch = useDispatch();
+	const reviews = useSelector((state) => state.review);
+	const user = useSelector((store) => store.session.user);
+  const {gameId} = useParams()
+	console.log(reviews);
 
-  useEffect(() => {
-    dispatch(getAllReviewsThunk());
+	const allReviews = Object.values(reviews);
+	const specificReview = allReviews.filter(
+		(review) => review.gameId === gameId
+	);
+	console.log(allReviews);
+	useEffect(() => {
+		dispatch(getAllReviewsThunk());
 	}, [dispatch]);
 
-  // const allReviews = Object.values(reviews)
-  // const specificReview = allReviews.filter(review =>review.gameId === id)
+	const handleDeleteClick = (gameId) => {
+	  dispatch(deleteReviewThunk(specificReview.id));
+		history.push(`/games/${gameId}`);
+	}
 
-	const handleDeleteClick = (id) => {
-    dispatch(deleteReviewThunk(id));
-		history.push(`/games/${id}`);
-	};
-  console.log(gameId, "gameId")
-  console.log(reviews, "reviews")
-  console.log(sessionUser, "sessionUser")
-  return <h3>Reviews</h3>
-}
-  {/* return (specificReview.map(review =>{
-    return (
-      <div className="review-box">
-        <br></br>
-              <div className="username">{review?.User?.username}</div>
-              <br></br>
-              <div>{review.createdAt.slice(0, 10)}</div>
-              <div>{review.review} </div>
-              <div>
+	return (
+    <>
+      {/* <h1>{allReviews[0].reviewText}</h1> */}
+      {/* <h3>{allReviews[0].rating}</h3> */}
+    </>
+	)
+	// return specificReview.map((review) => {
+	// 	<div className="review-box">
+	// 		<br></br>
+	// 		{/* <div className="username">{review?.user?.username}</div> */}
+	// 		<br></br>
+	// 		<div>{review.reviewText} </div>
+	// 		<div>{review.rating}</div>
+	// 		<div className="deleteButton">
+  //                   {review.userId === user?.id && (
+  //                     <button  onClick={() => handleDeleteClick(review.id)}>
+  //                       Delete Review
+  //                     </button>
 
-                {review.rating}
-                </div>
-                <div className="deleteButton">
-                  {review.userId === sessionUser?.id && (
-                    <button  onClick={() => handleDeleteClick(review.id)}>
-                      Delete Review
-                    </button>
+  //                   )}
+  //                 </div>
+	// 		<br></br>
+	// 	</div>;
+	// });
+};
 
-                  )}
-                </div>
-              <br></br>
-      </div>
-    )
-})
-  ) */}
-
-
-export default ReviewByGameId
+export default ReviewByGameId;
