@@ -4,55 +4,94 @@ import { useEffect } from "react";
 import {
 	getAllReviewsThunk,
 	deleteReviewThunk,
-	getAllReviewsByGameId,
+  editReviewThunk,
 } from "../../store/reviews";
 
-const ReviewByGameId = () => {
+const ReviewByGameId = ({ game }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const reviews = useSelector((state) => state.review);
 	const user = useSelector((store) => store.session.user);
-  const {gameId} = useParams()
-	console.log(reviews);
+	const sessionUser = useSelector((state) => state.session.user);
+	console.log(game.id, "gameId");
+	console.log(reviews, "reviews");
 
 	const allReviews = Object.values(reviews);
 	const specificReview = allReviews.filter(
-		(review) => review.gameId === gameId
+		(review) => game.id === review.gameId
 	);
-	console.log(allReviews);
+	console.log(allReviews, "allReviews");
+	console.log(specificReview, "specificReview");
 	useEffect(() => {
 		dispatch(getAllReviewsThunk());
 	}, [dispatch]);
 
-	const handleDeleteClick = (gameId) => {
-	  dispatch(deleteReviewThunk(specificReview.id));
+  const handleEditClick = (gameId) => {
+		dispatch(editReviewThunk(specificReview.id));
 		history.push(`/games/${gameId}`);
-	}
+	};
 
-	return (
-    <>
-      {/* <h1>{allReviews[0].reviewText}</h1> */}
-      {/* <h3>{allReviews[0].rating}</h3> */}
-    </>
-	)
-	// return specificReview.map((review) => {
-	// 	<div className="review-box">
-	// 		<br></br>
-	// 		{/* <div className="username">{review?.user?.username}</div> */}
-	// 		<br></br>
-	// 		<div>{review.reviewText} </div>
-	// 		<div>{review.rating}</div>
-	// 		<div className="deleteButton">
-  //                   {review.userId === user?.id && (
-  //                     <button  onClick={() => handleDeleteClick(review.id)}>
-  //                       Delete Review
-  //                     </button>
-
-  //                   )}
-  //                 </div>
-	// 		<br></br>
-	// 	</div>;
-	// });
+	const handleDeleteClick = (gameId) => {
+		dispatch(deleteReviewThunk(specificReview.id));
+		history.push(`/games/${gameId}`);
+	};
+	return specificReview.map((review) => {
+		return (
+			<div className="review-box">
+				<br></br>
+				<div className="username">{review?.User?.username}</div>
+				<br></br>
+				{/* <div>{review.createdAt.slice(0, 10)}</div> */}
+				<h1>{review.rating}/10</h1>
+				<div>{review.reviewText} </div>
+				<div>
+					{/* <FontAwesomeIcon className="star" icon={faStar} /> */}
+				</div>
+				<div className="deleteButton">
+					{review.userId === sessionUser?.id && (
+						<>
+							<button onClick={() => handleEditClick(review.id)}>
+								Edit Review
+							</button>
+							<button
+								onClick={() => handleDeleteClick(review.id)}
+							>
+								Delete Review
+							</button>
+						</>
+					)}
+				</div>
+				<br></br>
+			</div>
+		);
+	});
 };
 
+// 	return specificReview.map((review) => {
+//     {console.log(review.reviewText)}
+// 		<div className="review-box">
+// 			<br></br>
+// 			<div className="username">{review.rating}</div>
+// 			<br></br>
+// 			<div>{review.reviewText} </div>
+// 			<div>{review.rating}</div>
+// 			<div className="deleteButton">
+// 				{review.userId === user?.id && (
+// 					<button onClick={() => handleDeleteClick(review.id)}>
+// 						Delete Review
+// 					</button>
+// 				)}
+// 			</div>
+// 			<br></br>
+// 		</div>;
+// 	});
+// };
+
+// return (
+//   <>
+//     <h1>{allReviews[0].rating}/10</h1>
+//     <h2>{allReviews[0].reviewText}</h2>
+//     <p></p>
+//   </>
+// )
 export default ReviewByGameId;

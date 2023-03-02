@@ -37,10 +37,10 @@ const GameDetail = () => {
 				<strong>{game.developer}</strong>
 			</div>
 
-			<h3>Game Reviews</h3>
+			<h2>Game Reviews</h2>
 			<div>
 
-			<ReviewByGameId />
+			<ReviewByGameId game={game}/>
 			</div>
 		</div>
 	);
