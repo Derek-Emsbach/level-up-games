@@ -30,8 +30,68 @@ hogwarts_legacy = Game(
     description="Hogwarts Legacy is an action role-playing game in which players are able to attend classes at Hogwarts School of Witchcraft and Wizardry. Players can explore locations from the Wizarding World franchise, such as the Forbidden Forest, Diagon Alley, and Hogsmeade.",
     # release_date=date(2023, 2, 10),
     developer="Avalanche Software",
-    genre="Open World",
-    platform="PS5",
+    genre="Action role-playing",
+    platform="PlayStation 5",
+)
+red_dead_redemption_2 = Game(
+    user_id=2,
+    title='Red Dead Redemption 2',
+    preview_image="https://upload.wikimedia.org/wikipedia/en/thumb/4/44/Red_Dead_Redemption_II.jpg/220px-Red_Dead_Redemption_II.jpg",
+    description="Red Dead Redemption 2 is a Western-themed action-adventure game. Played from a first- or third-person perspective, the game is set in an open-world environment featuring a fictionalized version of the United States in 1899.[1] It features single-player and online multiplayer components, the latter released under Red Dead Online.[2] For most of the game, the player controls outlaw Arthur Morgan, a member of the Van der Linde gang, as he completes missions—linear scenarios with set objectives—to progress the story; from the epilogue, the player controls Red Dead Redemption protagonist John Marston.[3] Outside of missions, they can freely roam the interactive world.[4] They may engage in combat with enemies using melee attacks, firearms, bow and arrow, throwables, or explosives, and can dual wield weapons.[5][6] The player can swim as Arthur but not as John.",
+    # release_date=date(2002, 11, 18),
+    developer="Rockstar Studios",
+    genre="Action-adventure",
+    platform="PlayStation 4",
+)
+zelda_ocarina_of_time = Game(
+    user_id=2,
+    title='The Legend of Zelda:Ocarina of Time',
+    preview_image="https://upload.wikimedia.org/wikipedia/en/thumb/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg/220px-The_Legend_of_Zelda_Ocarina_of_Time.jpg",
+    description="The Legend of Zelda: Ocarina of Time is a fantasy action-adventure game set in an expansive environment. The player controls series protagonist Link from a third-person perspective in a three-dimensional world. Link primarily fights with a sword and shield but can also use other weapons such as projectiles, bombs, and magic spells. The control scheme introduced techniques such as context-sensitive actions and a targeting system called Z-targeting, which allows the player to have Link focus and latch onto enemies or other objects. When using this technique, the camera follows the target and Link constantly faces it. Projectile attacks are automatically directed at the target and do not require manual aiming. Context-sensitive actions allow multiple tasks to be assigned to one button, simplifying the control scheme.",
+    # release_date=date(2002, 11, 18),
+    developer="Nintendo",
+    genre="Action-adventure",
+    platform="Nintendo 64",
+)
+metal_gear_solid = Game(
+    user_id=2,
+    title='Metal Gear Solid',
+    preview_image="https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Metal_Gear_Solid_cover_art.png/220px-Metal_Gear_Solid_cover_art.png",
+    description="Players control Solid Snake, a soldier who infiltrates a nuclear weapons facility to neutralize the terrorist threat from FOXHOUND, a renegade special forces unit.[7] Snake must liberate hostages and stop the terrorists from launching a nuclear strike.[8] Cinematic cutscenes were rendered using the in-game engine and graphics, and voice acting is used throughout.[9]",
+    # release_date=date(2002, 11, 18),
+    developer="	Konami Computer Entertainment Japan",
+    genre="	Action-adventure, stealth",
+    platform="PlayStation 1",
+)
+witcher_3 = Game(
+    user_id=3,
+    title='The Witcher 3: Wild Hunt',
+    preview_image="https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Witcher_3_cover_art.jpg/220px-Witcher_3_cover_art.jpg",
+    description="The game takes place in a fictional fantasy world based on Slavic mythology. Players control Geralt of Rivia, a monster slayer for hire known as a Witcher, and search for his adopted daughter, who is on the run from the otherworldly Wild Hunt. Players battle the game's many dangers with weapons and magic, interact with non-player characters, and complete quests to acquire experience points and gold, which are used to increase Geralt's abilities and purchase equipment. The game's story has three possible endings, determined by the player's choices at key points in the narrative.",
+    # release_date=date(2002, 11, 18),
+    developer="CD Projekt Red",
+    genre="Action role-playing",
+    platform="Xbox One",
+)
+spider_man = Game(
+    user_id=3,
+    title='Spider-Man',
+    preview_image="https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Spider-Man_PS4_cover.jpg/220px-Spider-Man_PS4_cover.jpg",
+    description="Based on the Marvel Comics character Spider-Man, it tells an original narrative that is inspired by the long-running comic book mythology, while also drawing from various adaptations in other media. In the main story, the super-human crime lord Mister Negative orchestrates a plot to seize control of New York City's criminal underworld. When Mister Negative threatens to release a deadly virus, Spider-Man must confront him and protect the city while dealing with the personal problems of his civilian persona, Peter Parker.",
+    # release_date=date(2002, 11, 18),
+    developer="Insomniac Games",
+    genre="Action-adventure",
+    platform="PlayStation 5",
+)
+skyrim = Game(
+    user_id=3,
+    title='The Elder Scrolls V: Skyrim',
+    preview_image="https://upload.wikimedia.org/wikipedia/en/thumb/1/15/The_Elder_Scrolls_V_Skyrim_cover.png/220px-The_Elder_Scrolls_V_Skyrim_cover.png",
+    description="The game is set 200 years after the events of Oblivion, and takes place in Skyrim, the northernmost province of Tamriel. Its main story focuses on the player's character, the Dragonborn, on their quest to defeat Alduin the World-Eater, a dragon who is prophesied to destroy the world. Over the course of the game, the player completes quests and develops the character by improving skills. The game continues the open world tradition of its predecessors by allowing the player to travel anywhere in the game world at any time, and to ignore or postpone the main storyline indefinitely.",
+    # release_date=date(2002, 11, 18),
+    developer="	Bethesda Game Studios",
+    genre="Action role-playing",
+    platform="PlayStation 3",
 )
 
 
@@ -39,6 +99,12 @@ def seed_games():
     db.session.add(metroid_prime)
     db.session.add(elden_ring)
     db.session.add(hogwarts_legacy)
+    db.session.add(red_dead_redemption_2)
+    db.session.add(zelda_ocarina_of_time)
+    db.session.add(metal_gear_solid)
+    db.session.add(witcher_3)
+    db.session.add(spider_man)
+    db.session.add(skyrim)
     db.session.commit()
 
 
