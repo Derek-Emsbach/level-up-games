@@ -16,57 +16,55 @@ def get_all_reviews():
     Print(res)
     return res
 
-# @game_routes.route('', methods=["POST"])
-# def create_new_game():
-#     game_data = request.json
 
-#     new_game = Game(**game_data, user_id=current_user.id)
+@review_routes.route('', methods=["POST"])
+def create_new_review():
+    review_data = request.json
+    Print(review_data)
 
-#     db.session.add(new_game)
-#     db.session.commit()
+    new_review = Review(**review_data, user_id=current_user.id)
+    Print(new_review)
 
-
-#     return {new_game.id: new_game.to_dict()}
-
-# @game_routes.route('/<int:id>')
-# def get_game(id):
-#     game = Game.query.get(id)
-#     return game.to_dict()
+    db.session.add(new_review)
+    db.session.commit()
 
 
+    return {new_review.id: new_review.to_dict()}
 
 
-
-# @game_routes.route('/<int:id>', methods=["PATCH", "PUT"])
-# def edit_game(id):
-#     game_data = request.json
-
-#     if game_data["userId"] != current_user.id:
-#         return {"error": "You are not authorized to delete this tweet"}, 401
-
-#     game = Game.query.get(id)
-
-#     game.title = game_data['title']
-#     game.preview_image = game_data['previewImage']
-#     game.genre = game_data['genre']
-#     game.developer = game_data['developer']
-#     game.platform = game_data['platform']
-
-#     db.session.commit()
-
-#     return {game.id: game.to_dict()}
+@review_routes.route('/<int:id>')
+def get_review(id):
+    review = Review.query.get(id)
+    return review.to_dict()
 
 
-# @game_routes.route('/<int:id>', methods=["DELETE"])
-# def delete_game(id):
-#     data = request.json
+@review_routes.route('/<int:id>', methods=["PATCH", "PUT"])
+def edit_review(id):
+    review_data = request.json
 
-#     if data["user_id"] != current_user.id:
-#         return {"error": "You are not authorized to delete this tweet"}, 401
+    if review_data["userId"] != current_user.id:
+        return {"error": "You are not authorized to delete this review"}, 401
 
-#     game = Game.query.get(id)
+    review = Review.query.get(id)
 
-#     db.session.delete(game)
-#     db.session.commit()
+    review.review_text = review_data['review_text']
+    review.rating = review_data['rating']
 
-#     return {"msg": "Successfully deleted"}
+    db.session.commit()
+
+    return {review.id: review.to_dict()}
+
+
+@review_routes.route('/<int:id>', methods=["DELETE"])
+def delete_review(id):
+    data = request.json
+
+    if data["user_id"] != current_user.id:
+        return {"error": "You are not authorized to delete this review"}, 401
+
+    review = Review.query.get(id)
+
+    db.session.delete(review)
+    db.session.commit()
+
+    return {"msg": "Successfully deleted"}

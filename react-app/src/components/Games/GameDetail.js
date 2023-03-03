@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllGamesThunk, getSingleGame } from "../../store/games";
+import ReviewForm from "../Reviews/CreateReview";
 import ReviewByGameId from "../Reviews/ReviewByGameId";
 // import { getAllReviewsThunk } from "../../store/reviews";
 // import ReviewByGameId from "../Reviews/ReviewByGameId";
@@ -39,7 +40,9 @@ const GameDetail = () => {
 
 			<h2>Game Reviews</h2>
 			<div>
-
+			<h3>Have you played this game?</h3>
+			<label>Give your thoughts on it!</label>
+			<ReviewForm game={game}/>
 			<ReviewByGameId game={game}/>
 			</div>
 		</div>
