@@ -15,10 +15,11 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # Related Data
-    games = db.relationship("Game", back_populates='user', cascade='all, delete')
-    reviews = db.relationship("Review", back_populates='user')
-    lists = db.relationship("List", back_populates='user', cascade='all, delete')
-
+    games = db.relationship(
+        "Game", back_populates='user', cascade='all, delete')
+    reviews = db.relationship("Review", back_populates='user', cascade='all, delete')
+    lists = db.relationship(
+        "List", back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
@@ -40,6 +41,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'games' : [game.to_dict() for game in self.games],
-            'lists' : [list.to_dict() for list in self.lists]
+            'games': [game.to_dict() for game in self.games],
+            'lists': [list.to_dict() for list in self.lists]
         }
