@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createGameThunk } from "../../store/games";
 import { useHistory } from "react-router-dom";
 
 const CreateGame = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
+	const userId = useSelector((state) => state.session.user.id)
+
 	const [title, setTitle] = useState("");
 	const [previewImage, setPreviewImage] = useState("");
 	const [description, setDescription] = useState("");
@@ -39,6 +41,12 @@ const CreateGame = () => {
 		dispatch(createGameThunk(data));
 		history.push("/");
 	};
+
+	const handleCancelClick = (e) => {
+		e.preventDefault();
+
+		history.push(`/`)
+	  };
 
 	return (
 		<>
@@ -98,6 +106,7 @@ const CreateGame = () => {
 					onChange={(e) => setPlatform(e.target.value)}
 				></input>
 				<button disabled={tooLong}>Add Game!</button>
+				<button type="button" onClick={handleCancelClick}>Cancel</button>
 			</form>
 		</>
 	);

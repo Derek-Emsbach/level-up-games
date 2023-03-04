@@ -20,7 +20,7 @@ class Game(db.Model):
 
     # Related Data
     user = db.relationship("User", back_populates='games')
-    reviews = db.relationship("Review", back_populates='games')
+    reviews = db.relationship("Review", back_populates='games', cascade='all, delete')
     game_in_lists = db.relationship(
         "List", secondary=game_lists, back_populates='list_of_games', cascade='all, delete')
 

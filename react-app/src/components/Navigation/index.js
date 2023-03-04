@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
 			</li>
 			<li className="left_side">
 				<NavLink exact to="/gameform">
-					Add Game
+					Add a Game you've played!
 				</NavLink>
 			</li>
 			{isLoaded && (

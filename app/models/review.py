@@ -18,7 +18,6 @@ class Review(db.Model):
 
 
     def __repr__(self):
-        print(self)
         return f"<Review id: {self.id}, user_id: {self.user_id}, game_id: {self.game_id}, review_text: {self.review_text}, rating: {self.rating}>"
 
     def to_dict(self):

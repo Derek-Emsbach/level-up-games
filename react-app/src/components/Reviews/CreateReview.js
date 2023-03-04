@@ -1,64 +1,62 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import { addReview } from '../../store/reviews'
+import { createReviewThunk } from "../../store/reviews"
 
 
-const ReviewForm = () => {
+
+const ReviewForm = ({game}) => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { spotId } = useParams()
   const sessionUser = useSelector((state) => state.session.user);
-  const userId = useSelector((state) => state.session.user.id)
+ 
 
-
-  const [stars, setStars] = useState(0)
-  const [review, setReview] = useState("")
+  const [rating, setRating] = useState(0)
+  const [reviewText, setReviewText] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     const data = {
-      userId,
-      spotId,
-      review,
-      stars
+      game_id: game.id,
+      review_text: reviewText,
+      rating
     }
 
-    let newReview = await dispatch(addReview(spotId, data))
-
-    if(newReview) {
-      history.push(`/spots/${spotId}`)
-    }
+    dispatch(createReviewThunk(data))
+    history.push(`/games/${game.id}`)
   }
 
   const handleCancelClick = (e) => {
     e.preventDefault();
+    setRating(0)
+    setReviewText("")
 
-    history.push(`/spots/${spotId}`)
+    history.push(`/games/${game.id}`)
   };
 
   return (
     <div>
+      {}
       <form className="create-review-form" onSubmit={handleSubmit}>
-        <h1>Write a Review</h1>
+        <h1>Played this game before?</h1>
         <label>Describe your experience</label>
-        <input
+        <textarea
           type="textarea"
           placeholder="write about your experience here..."
-          value={review}
+          value={reviewText}
           required
-          onChange={(e) => setReview(e.target.value)}
-          />
+          onChange={(e) => setReviewText(e.target.value)}
+          ></textarea>
         <label>Rate your experience</label>
         <input
           type="number"
-          placeholder="enter rating..."
-          value={stars}
-          min={0}
-          max={5}
+          placeholder="enter rating 1-10..."
+          value={rating}
+          min={1}
+          max={10}
           required
-          onChange={(e) => setStars(e.target.value)}
+          onChange={(e) => setRating(e.target.value)}
           />
         <button type="submit">Create Review</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
