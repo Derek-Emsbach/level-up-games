@@ -13,17 +13,21 @@ def get_all_reviews():
     reviews = Review.query.all()
 
     res = {review.id: review.to_dict() for review in reviews}
-    Print(res)
+
     return res
+
+@review_routes.route('/<int:id>')
+def get_review(id):
+    review = Review.query.get(id)
+
+    return review.to_dict()
 
 
 @review_routes.route('', methods=["POST"])
 def create_new_review():
     review_data = request.json
-    Print(review_data)
 
-    new_review = Review(**review_data, user_id=current_user.id)
-    Print(new_review)
+    new_review = Review(user_id=current_user.id, game_id=review_data['game_id'], review_text=review_data['review_text'], rating=review_data['rating'])
 
     db.session.add(new_review)
     db.session.commit()
@@ -32,10 +36,6 @@ def create_new_review():
     return {new_review.id: new_review.to_dict()}
 
 
-@review_routes.route('/<int:id>')
-def get_review(id):
-    review = Review.query.get(id)
-    return review.to_dict()
 
 
 @review_routes.route('/<int:id>', methods=["PATCH", "PUT"])
@@ -47,7 +47,7 @@ def edit_review(id):
 
     review = Review.query.get(id)
 
-    review.review_text = review_data['review_text']
+    review.review_text = review_data['reviewText']
     review.rating = review_data['rating']
 
     db.session.commit()

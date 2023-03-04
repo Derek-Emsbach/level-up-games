@@ -39,7 +39,7 @@ const CreateGame = () => {
 		};
 
 		dispatch(createGameThunk(data));
-		// history.push("/");
+		history.push("/");
 	};
 
 	const handleCancelClick = (e) => {

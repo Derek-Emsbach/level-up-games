@@ -30,8 +30,7 @@ def get_all_games():
 @game_routes.route('', methods=["POST"])
 def create_new_game():
     game_data = request.json
-    Print(game_data)
-    # new_game = Game(**game_data, user_id=current_user.id)
+    
     new_game = Game(user_id=current_user.id, title=game_data['title'], description=game_data['description'], genre=game_data['genre'],
                     developer=game_data['developer'], platform=game_data['platform'], preview_image=game_data['preview_image'])
 

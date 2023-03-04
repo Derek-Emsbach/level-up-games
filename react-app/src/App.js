@@ -12,6 +12,8 @@ import AllGames from "./components/Games/AllGames";
 import GameDetail from "./components/Games/GameDetail";
 import CreateGame from "./components/Games/CreateGame";
 import EditGameForm from "./components/Games/EditGameForm";
+import EditReviewForm from "./components/Reviews/EditReviewForm";
+
 
 function App() {
 	const dispatch = useDispatch();
@@ -48,6 +50,9 @@ function App() {
 					</ProtectedRoute>
 					<ProtectedRoute path="/games/:gameId/update" exact={true}>
 						<EditGameForm />
+					</ProtectedRoute>
+					<ProtectedRoute path="/reviews/:reviewId/update" exact={true}>
+						<EditReviewForm />
 					</ProtectedRoute>
 					<Route>
 						<h1>Temporary 404</h1>

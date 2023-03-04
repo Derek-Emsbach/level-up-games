@@ -5,13 +5,11 @@ import { createReviewThunk } from "../../store/reviews"
 
 
 
-const ReviewForm = () => {
+const ReviewForm = ({game}) => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { gameId } = useParams()
   const sessionUser = useSelector((state) => state.session.user);
-  const userId = useSelector((state) => state.session.user.id)
-
+ 
 
   const [rating, setRating] = useState(0)
   const [reviewText, setReviewText] = useState("")
@@ -20,26 +18,26 @@ const ReviewForm = () => {
     e.preventDefault()
 
     const data = {
-      userId,
-      reviewText,
+      game_id: game.id,
+      review_text: reviewText,
       rating
     }
 
-    let newReview = await dispatch(createReviewThunk(data))
-    console.log(newReview, "newReview")
-    if(newReview) {
-      history.push(`/games/${gameId}`)
-    }
+    dispatch(createReviewThunk(data))
+    history.push(`/games/${game.id}`)
   }
 
   const handleCancelClick = (e) => {
     e.preventDefault();
+    setRating(0)
+    setReviewText("")
 
-    history.push(`/games/${gameId}`)
+    history.push(`/games/${game.id}`)
   };
 
   return (
     <div>
+      {}
       <form className="create-review-form" onSubmit={handleSubmit}>
         <h1>Played this game before?</h1>
         <label>Describe your experience</label>

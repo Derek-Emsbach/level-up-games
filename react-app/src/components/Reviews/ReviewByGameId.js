@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import {
 	getAllReviewsThunk,
 	deleteReviewThunk,
-  editReviewThunk,
+	editReviewThunk,
 } from "../../store/reviews";
 
 const ReviewByGameId = ({ game }) => {
@@ -13,27 +13,29 @@ const ReviewByGameId = ({ game }) => {
 	const reviews = useSelector((state) => state.review);
 	const user = useSelector((store) => store.session.user);
 	const sessionUser = useSelector((state) => state.session.user);
-	console.log(game.id, "gameId");
-	console.log(reviews, "reviews");
+	const userId = sessionUser.id
 
 	const allReviews = Object.values(reviews);
 	const specificReview = allReviews.filter(
 		(review) => game.id === review.gameId
 	);
-	console.log(allReviews, "allReviews");
-	console.log(specificReview, "specificReview");
+
+
 	useEffect(() => {
 		dispatch(getAllReviewsThunk());
 	}, [dispatch]);
 
-  const handleEditClick = (gameId) => {
-		dispatch(editReviewThunk(specificReview.id));
-		history.push(`/games/${gameId}`);
+
+	const handleEditClick = () => {
+		history.push(`/reviews/${specificReview[0].id}/update`);
 	};
 
-	const handleDeleteClick = (gameId) => {
-		dispatch(deleteReviewThunk(specificReview.id));
-		history.push(`/games/${gameId}`);
+	const handleDeleteClick = () => {
+		const reviewById = specificReview.filter((userReview) => userReview.userId === sessionUser.id)
+		const reviewToDelete = reviewById[0].id
+		if(reviewById.length > 0){
+			dispatch(deleteReviewThunk({reviewToDelete, user_id: userId}));
+		}
 	};
 	return specificReview.map((review) => {
 		return (
@@ -50,14 +52,8 @@ const ReviewByGameId = ({ game }) => {
 				<div className="deleteButton">
 					{review.userId === sessionUser?.id && (
 						<>
-							<button onClick={() => handleEditClick(review.id)}>
-								Edit Review
-							</button>
-							<button
-								onClick={() => handleDeleteClick(review.id)}
-							>
-								Delete Review
-							</button>
+							<button onClick={handleEditClick}>Edit</button>
+							<button onClick={handleDeleteClick}>Delete</button>
 						</>
 					)}
 				</div>
@@ -68,7 +64,7 @@ const ReviewByGameId = ({ game }) => {
 };
 
 // 	return specificReview.map((review) => {
-//     {console.log(review.reviewText)}
+//    
 // 		<div className="review-box">
 // 			<br></br>
 // 			<div className="username">{review.rating}</div>

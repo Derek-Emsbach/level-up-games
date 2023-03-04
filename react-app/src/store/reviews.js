@@ -1,6 +1,7 @@
 const defaultState = {};
 
 const LOAD_REVIEWS = "reviews/LOAD_REVIEWS";
+const LOAD_ONE_REVIEW = "reviews/LOAD_ONE_REVIEW"
 const DELETE_REVIEW = "reviews/DELETE_REVIEW"
 
 const loadReviews = (reviews) => {
@@ -9,6 +10,13 @@ const loadReviews = (reviews) => {
         payload: reviews,
     }
 }
+
+const loadOneReview = (reviews) => {
+	return {
+	  type: LOAD_ONE_REVIEW,
+	  reviews,
+	};
+  };
 
 const deleteReview = (review) => {
     return {
@@ -26,6 +34,16 @@ export const getAllReviewsThunk = () => async (dispatch) => {
 		return reviews;
 	}
 }
+
+export const getSingleReview = (reviewId) => async (dispatch) => {
+	const response = await fetch(`/api/reviews/${reviewId}`);
+
+	if (response.ok) {
+		const {review} = await response.json();
+		dispatch(loadOneReview(review));
+		return review;
+	}
+};
 
 export const getAllReviewsByGameId = (gameId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${gameId}`);
@@ -71,19 +89,20 @@ export const editReviewThunk = (id, data) => async (dispatch) => {
 	}
 };
 
-export const deleteReviewThunk = (reviewId) => async (dispatch) => {
-	const body = JSON.stringify(reviewId);
+export const deleteReviewThunk = (data) => async (dispatch) => {
+	const body = JSON.stringify(data);
 
-	const res = await fetch(`/api/reviews/${reviewId}`, {
+
+	const res = await fetch(`/api/reviews/${data.reviewToDelete}`, {
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json",
 		},
 		body,
 	});
-
+	
 	if (res.ok) {
-		dispatch(deleteReview(reviewId));
+		dispatch(deleteReview(data.reviewToDelete));
 	}
 };
 
@@ -93,6 +112,10 @@ const reviewReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case LOAD_REVIEWS:
 			return { ...newState, ...action.payload };
+
+		case LOAD_ONE_REVIEW:
+			newState[action.review] = action.review;
+			return newState;
 
 		case DELETE_REVIEW:
 			delete newState[action.payload];
