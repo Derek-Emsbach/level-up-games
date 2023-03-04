@@ -56,6 +56,7 @@ def https_redirect():
     #     url = request.url.replace("http://localhost:5000/", "http://localhost:3000/", 1)
     #     return redirect(url, code=301)
 
+
 @app.after_request
 def inject_csrf_token(response):
     response.set_cookie(
@@ -74,9 +75,9 @@ def api_help():
     Returns all API routes and their doc strings
     """
     acceptable_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-    route_list = { rule.rule: [[ method for method in rule.methods if method in acceptable_methods ],
-                    app.view_functions[rule.endpoint].__doc__ ]
-                    for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
+    route_list = {rule.rule: [[method for method in rule.methods if method in acceptable_methods],
+                              app.view_functions[rule.endpoint].__doc__]
+                  for rule in app.url_map.iter_rules() if rule.endpoint != 'static'}
     return route_list
 
 

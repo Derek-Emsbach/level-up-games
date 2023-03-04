@@ -2,8 +2,10 @@ from app.models import db, Review, environment, SCHEMA
 
 
 def seed_reviews():
-    rev1 = Review(user_id=1, game_id=1, review_text="My favorite of the Metroid games. Spent countless hours as a kid playing this game and will never forget it!", rating=10)
-    rev2 = Review(user_id=1, game_id=2, review_text="I'll never forget the first time I saw the lands between. This game will make you better whether you want to or not.", rating=10)
+    rev1 = Review(user_id=1, game_id=1,
+                  review_text="My favorite of the Metroid games. Spent countless hours as a kid playing this game and will never forget it!", rating=10)
+    rev2 = Review(user_id=1, game_id=2,
+                  review_text="I'll never forget the first time I saw the lands between. This game will make you better whether you want to or not.", rating=10)
     rev3 = Review(user_id=1, game_id=3, review_text="This is the game I always wanted when I was a kid. Love to explore Hogwarts and pretend to live out my fantasy of being a real wizard in the HP world!", rating=9)
 
     db.session.add(rev1)
