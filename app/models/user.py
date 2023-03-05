@@ -42,5 +42,5 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'games': [game.to_dict() for game in self.games],
-            'lists': [list.to_dict() for list in self.lists]
+            # 'lists': [list.to_dict() for list in self.lists]
         }
