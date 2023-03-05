@@ -53,6 +53,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
+
     op.create_table('lists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -62,6 +63,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE lists SET SCHEMA {SCHEMA};")
+
     op.create_table('game_lists',
     sa.Column('lists', sa.Integer(), nullable=False),
     sa.Column('games', sa.Integer(), nullable=False),
@@ -69,6 +71,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['lists'], ['lists.id'], ),
     sa.PrimaryKeyConstraint('lists', 'games')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE game_lists SET SCHEMA {SCHEMA};")
+
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
