@@ -4,11 +4,11 @@ from .games import metroid_prime, elden_ring, hogwarts_legacy
 
 def seed_lists():
     fav1 = List(
-        user_id=1, list_name='Top Games', list_of_games=[elden_ring, metroid_prime])
+        user_id=1, list_name='Top Games', games=[elden_ring, metroid_prime])
     fav2 = List(
-        user_id=1, list_name='Most Played', list_of_games=[elden_ring])
+        user_id=1, list_name='Most Played', games=[elden_ring])
     fav3 = List(
-        user_id=1, list_name='Played', list_of_games=[metroid_prime, elden_ring, hogwarts_legacy])
+        user_id=1, list_name='Played', games=[metroid_prime, elden_ring, hogwarts_legacy])
 
     db.session.add(fav1)
     db.session.add(fav2)

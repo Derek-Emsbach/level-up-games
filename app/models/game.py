@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from .game_lists import game_lists
+# from .game_lists import game_lists
 
 
 class Game(db.Model):
@@ -22,8 +22,8 @@ class Game(db.Model):
     user = db.relationship("User", back_populates='games')
     reviews = db.relationship(
         "Review", back_populates='games', cascade='all, delete')
-    game_in_lists = db.relationship(
-        "List", secondary=game_lists, back_populates='list_of_games', cascade='all, delete')
+    # game_in_lists = db.relationship(
+    #     "List", secondary=game_lists, back_populates='list_of_games', cascade='all, delete')
 
     def __repr__(self):
         return f"<Game id: {self.id}, user_id: {self.user_id}, title: {self.title}, preview_image: {self.preview_image}, description: {self.description}, developer: {self.developer}, genre: {self.genre}, platform: {self.platform}>"
