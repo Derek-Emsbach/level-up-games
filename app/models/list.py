@@ -1,7 +1,14 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from .game_lists import game_lists
+# from .game_lists import game_lists
 
-
+game_lists = db.Table(
+    "game_lists",
+    db.Model.metadata,
+    db.Column('lists', db.Integer, db.ForeignKey(
+        add_prefix_for_prod('lists.id')), primary_key=True),
+    db.Column('games', db.Integer, db.ForeignKey(
+        add_prefix_for_prod('games.id')), primary_key=True)
+)
 class List(db.Model):
     __tablename__ = 'lists'
 
@@ -15,8 +22,10 @@ class List(db.Model):
 
     # Related Data
     user = db.relationship("User", back_populates='lists')
-    list_of_games = db.relationship(
-        "Game", secondary=game_lists, back_populates='game_in_lists', cascade='all, delete')
+    games = db.relationship(
+        "Game", secondary="game_lists", lazy="joined")
+    # list_of_games = db.relationship(
+        # "Game", secondary=game_lists, back_populates='game_in_lists', cascade='all, delete')
 
     def to_dict(self):
         return {
