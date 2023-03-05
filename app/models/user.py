@@ -18,8 +18,8 @@ class User(db.Model, UserMixin):
     games = db.relationship(
         "Game", back_populates='user', cascade='all, delete')
     reviews = db.relationship("Review", back_populates='user', cascade='all, delete')
-    lists = db.relationship(
-        "List", back_populates='user', cascade='all, delete')
+    # lists = db.relationship(
+    #     "List", back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
