@@ -30,27 +30,6 @@ def get_all_games():
     return res
 
 
-# Get a specific game
-# @games_routes.route('/<int:id>')
-# def get_game(id):
-#     game = Game.query.get(id)
-#     return game.to_dict()
-
-
-# Create a new game
-# @game_routes.route('', methods=["POST"])
-# def create_new_game():
-#     game_data = request.json
-
-#     new_game = Game(user_id=current_user.id, title=game_data['title'], description=game_data['description'], genre=game_data['genre'],
-#                     developer=game_data['developer'], platform=game_data['platform'], preview_image=game_data['preview_image'])
-
-#     db.session.add(new_game)
-#     db.session.commit()
-
-#     return {new_game.id: new_game.to_dict()}
-
-
 @game_routes.route('', methods=['POST'])
 @login_required
 def create_new_game():
