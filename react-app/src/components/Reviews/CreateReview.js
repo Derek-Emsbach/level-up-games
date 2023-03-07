@@ -9,7 +9,7 @@ const ReviewForm = ({game}) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
- 
+
 
   const [rating, setRating] = useState(0)
   const [reviewText, setReviewText] = useState("")
@@ -34,7 +34,7 @@ const ReviewForm = ({game}) => {
 
     history.push(`/games/${game.id}`)
   };
-
+  console.log(game, 'this!!!')
   return (
     <div>
       {}
