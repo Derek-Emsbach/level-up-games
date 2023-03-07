@@ -6,16 +6,16 @@ import { useHistory } from "react-router-dom";
 const CreateGame = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
-	const userId = useSelector((state) => state.session.user.id)
+	const userId = useSelector((state) => state.session.user.id);
 
 	const [title, setTitle] = useState("");
 	const [previewImage, setPreviewImage] = useState("");
 	const [description, setDescription] = useState("");
-	// const [releaseDate, setReleaseDate] = useState("");
 	const [developer, setDeveloper] = useState("");
 	const [genre, setGenre] = useState("");
 	const [platform, setPlatform] = useState("");
 	const [tooLong, setTooLong] = useState(false);
+	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
 		if (description.length > 1000) {
@@ -25,33 +25,61 @@ const CreateGame = () => {
 		}
 	}, [description.length]);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault();
 
-		const data = {
+	// 	const data = {
+	// 		title,
+	// 		preview_image: previewImage,
+	// 		description,
+	// 		developer,
+	// 		genre,
+	// 		platform,
+	// 	};
+
+	// 	dispatch(createGameThunk(data));
+	// 	history.push("/");
+	// };
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		// setErrors([]);
+		const payload = {
 			title,
 			preview_image: previewImage,
 			description,
-			// release_date: releaseDate,
 			developer,
 			genre,
 			platform,
 		};
+		let data = await dispatch(createGameThunk(payload));
 
-		dispatch(createGameThunk(data));
-		history.push("/");
+		if (data) {
+			console.log(data)
+			setErrors([...Object.values(data.errors)]);
+		} else {
+			history.push(`/`);
+
+		}
 	};
 
 	const handleCancelClick = (e) => {
 		e.preventDefault();
 
-		history.push(`/`)
-	  };
+		history.push(`/`);
+	};
 
 	return (
 		<>
 			<h3>Add a game you've played!</h3>
 			<form onSubmit={handleSubmit}>
+				<ul>
+					{errors.map((error, idx) => (
+						<li className="edit-errors" key={idx}>
+							{error}
+						</li>
+					))}
+				</ul>
 				<label>Title</label>
 				<input
 					placeholder="Doom, Last of Us, Metal Gear Solid..."
@@ -106,7 +134,9 @@ const CreateGame = () => {
 					onChange={(e) => setPlatform(e.target.value)}
 				></input>
 				<button disabled={tooLong}>Add Game!</button>
-				<button type="button" onClick={handleCancelClick}>Cancel</button>
+				<button type="button" onClick={handleCancelClick}>
+					Cancel
+				</button>
 			</form>
 		</>
 	);
