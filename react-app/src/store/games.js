@@ -79,6 +79,9 @@ export const editGameThunk = (id, data) => async (dispatch) => {
 	if (res.ok) {
 		const newData = await res.json();
 		dispatch(loadGames(newData));
+	} else {
+		const error = await res.json();
+		return error;
 	}
 };
 
