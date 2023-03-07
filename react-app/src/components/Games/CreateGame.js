@@ -43,7 +43,7 @@ const CreateGame = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// setErrors([]);
+		setErrors([]);
 		const payload = {
 			title,
 			preview_image: previewImage,

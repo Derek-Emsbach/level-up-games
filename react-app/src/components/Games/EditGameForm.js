@@ -14,11 +14,10 @@ const EditGameForm = () => {
 	const [title, setTitle] = useState(specificGame.title);
 	const [previewImage, setPreviewImage] = useState(specificGame.previewImage);
 	const [description, setDescription] = useState(specificGame.description);
-	// const [releaseDate, setReleaseDate] = useState("releaseDate");
 	const [developer, setDeveloper] = useState(specificGame.developer);
 	const [genre, setGenre] = useState(specificGame.genre);
 	const [platform, setPlatform] = useState(specificGame.platform);
-	// const [errors, setErrors] = useState([]);
+	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
 		if (setDescription.length > 1000) {
@@ -30,38 +29,37 @@ const EditGameForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// setErrors([]);
 		const payload = {
-			userId,
 			title,
-			previewImage,
+			preview_image: previewImage,
 			description,
-			// release_date: releaseDate,
 			developer,
 			genre,
 			platform,
 		};
 
-		dispatch(editGameThunk(gameId, payload));
-		// if (data.errors) {
-		//     setErrors([...Object.values(data.errors)]);
-		//   } else {
-		history.push(`/`);
-		//   }
+		let data = await dispatch(editGameThunk(gameId, payload));
+
+		if (data) {
+			setErrors([...Object.values(data.errors)]);
+		} else {
+			history.push(`/`);
+
+		}
 	};
 
 	return (
 		<>
 			<h3>Edit Game Details</h3>
-			{/* {!!errors.length && (
-          <ul>
-            {errors.map((error, idx) => (
-              <li className="edit-errors" key={idx}>
-                {error}
-              </li>
-            ))}
-          </ul>
-        )} */}
+			{!!errors.length && (
+				<ul>
+					{errors.map((error, idx) => (
+						<li className="edit-errors" key={idx}>
+							{error}
+						</li>
+					))}
+				</ul>
+			)}
 			<form onSubmit={handleSubmit}>
 				<label>Title</label>
 				<input
@@ -85,13 +83,6 @@ const EditGameForm = () => {
 						setDescription(e.target.value);
 					}}
 				></textarea>
-				{/* <label>Release Date</label>
-				<input
-					type="date"
-					style={{ display: "block" }}
-					value={releaseDate}
-					onChange={(e) => setReleaseDate(e.target.value)}
-				></input> */}
 				<label>Developer</label>
 				<input
 					style={{ display: "block" }}

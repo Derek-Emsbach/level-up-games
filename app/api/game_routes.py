@@ -58,22 +58,24 @@ def get_game(id):
 # edit game
 @game_routes.route('/<int:id>', methods=["PATCH", "PUT"])
 def edit_game(id):
-    game_data = request.json
+    form = GameForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        game_data = form.data
+        game = Game.query.get(id)
+        for key, value in game_data.items():
+            setattr(game, key, value)
 
-    if game_data["userId"] != current_user.id:
-        return {"error": "You are not authorized to delete this tweet"}, 401
+        # game.title = game_data['title']
+        # game.preview_image = game_data['previewImage']
+        # game.genre = game_data['genre']
+        # game.developer = game_data['developer']
+        # game.platform = game_data['platform']
 
-    game = Game.query.get(id)
+        db.session.commit()
 
-    game.title = game_data['title']
-    game.preview_image = game_data['previewImage']
-    game.genre = game_data['genre']
-    game.developer = game_data['developer']
-    game.platform = game_data['platform']
-
-    db.session.commit()
-
-    return {game.id: game.to_dict()}
+        return {game.id: game.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 # delete game
