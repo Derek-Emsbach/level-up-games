@@ -25,22 +25,6 @@ const CreateGame = () => {
 		}
 	}, [description.length]);
 
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-
-	// 	const data = {
-	// 		title,
-	// 		preview_image: previewImage,
-	// 		description,
-	// 		developer,
-	// 		genre,
-	// 		platform,
-	// 	};
-
-	// 	dispatch(createGameThunk(data));
-	// 	history.push("/");
-	// };
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setErrors([]);
@@ -55,7 +39,6 @@ const CreateGame = () => {
 		let data = await dispatch(createGameThunk(payload));
 
 		if (data) {
-			console.log(data)
 			setErrors([...Object.values(data.errors)]);
 		} else {
 			history.push(`/`);
@@ -105,13 +88,6 @@ const CreateGame = () => {
 						setDescription(e.target.value);
 					}}
 				></textarea>
-				{/* <label>Release Date</label>
-				<input
-					type="date"
-					style={{ display: "block" }}
-					value={releaseDate}
-					onChange={(e) => setReleaseDate(e.target.value)}
-				></input> */}
 				<label>Developer</label>
 				<input
 					placeholder="Nintendo, Sega, Capcom..."

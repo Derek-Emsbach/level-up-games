@@ -45,6 +45,7 @@ def create_new_game():
         db.session.add(new_game)
         db.session.commit()
         return {new_game.id: new_game.to_dict()}
+    Print(form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
@@ -65,12 +66,6 @@ def edit_game(id):
         game = Game.query.get(id)
         for key, value in game_data.items():
             setattr(game, key, value)
-
-        # game.title = game_data['title']
-        # game.preview_image = game_data['previewImage']
-        # game.genre = game_data['genre']
-        # game.developer = game_data['developer']
-        # game.platform = game_data['platform']
 
         db.session.commit()
 

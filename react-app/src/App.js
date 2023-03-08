@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useSelector } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
@@ -11,16 +11,31 @@ import Navigation from "./components/Navigation";
 import AllGames from "./components/Games/AllGames";
 import GameDetail from "./components/Games/GameDetail";
 import CreateGame from "./components/Games/CreateGame";
+import CreateReview from "./components/Reviews/CreateReview";
 import EditGameForm from "./components/Games/EditGameForm";
 import EditReviewForm from "./components/Reviews/EditReviewForm";
-
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
+	const user = useSelector((state) => state.session.user);
+
+	// useEffect(() => {
+	// 	dispatch(authenticate()).then(() => setIsLoaded(true));
+	// }, [dispatch]);
+
 	useEffect(() => {
-		dispatch(authenticate()).then(() => setIsLoaded(true));
+		(async () => {
+			await dispatch(authenticate());
+			setIsLoaded(true);
+		})();
 	}, [dispatch]);
+
+
+	if (!isLoaded) {
+		return null;
+	}
 
 	return (
 		<>
@@ -36,12 +51,6 @@ function App() {
 					<Route path="/signup">
 						<SignupFormPage />
 					</Route>
-					<ProtectedRoute path="/users" exact={true}>
-						<UsersList />
-					</ProtectedRoute>
-					<ProtectedRoute path="/users/:userId" exact={true}>
-						<User />
-					</ProtectedRoute>
 					<ProtectedRoute path="/gameform" exact={true}>
 						<CreateGame />
 					</ProtectedRoute>
@@ -51,7 +60,13 @@ function App() {
 					<ProtectedRoute path="/games/:gameId/update" exact={true}>
 						<EditGameForm />
 					</ProtectedRoute>
-					<ProtectedRoute path="/reviews/:reviewId/update" exact={true}>
+					<ProtectedRoute path="/reviewform" exact={true}>
+						<CreateReview />
+					</ProtectedRoute>
+					<ProtectedRoute
+						path="/reviews/:reviewId/update"
+						exact={true}
+					>
 						<EditReviewForm />
 					</ProtectedRoute>
 					<Route>
