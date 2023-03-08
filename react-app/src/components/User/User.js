@@ -16,9 +16,9 @@ function User() {
     })();
   }, [userId]);
 
-  if (!user) {
-    return null;
-  }
+  // if (!user) {
+  //   return null;
+  // }
 
   return (
     <>

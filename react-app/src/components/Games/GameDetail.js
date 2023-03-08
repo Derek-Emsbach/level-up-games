@@ -21,7 +21,7 @@ const GameDetail = () => {
 	const game = useSelector((state) => state.games[gameId]);
 	const user = useSelector((state) => state.session.user);
 	const reviews = useSelector((state) => Object.values(state.review));
-	console.log(game);
+
 	useEffect(() => {
 		dispatch(getAllGamesThunk());
 		dispatch(getSingleGame(gameId));
@@ -36,6 +36,9 @@ const GameDetail = () => {
 	const editGameForm = () => {
 		history.push(`games/${gameId}/update`);
 	};
+	const createReviewForm = () => {
+		history.push(`/reviewform`);
+	};
 
 	const handleDelete = () => {
 		dispatch(deleteGameThunk({ gameId, user_id: user.id }));
@@ -44,7 +47,6 @@ const GameDetail = () => {
 	const isReview = reviews.filter(
 		(review) => review.userId === user.id && review.gameId === gameId
 	);
-	console.log(isReview);
 	return (
 		<div className="game-caontainer">
 			<div className="platform">
@@ -68,8 +70,6 @@ const GameDetail = () => {
 			<div>
 				{isReview.length === 0 ? (
 					<div className="review-form-container">
-						<div>Have you played this game?</div>
-						<label>Give your thoughts on it!</label>
 						<ReviewForm game={game} />
 					</div>
 				) : null}

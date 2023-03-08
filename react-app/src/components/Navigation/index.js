@@ -25,11 +25,11 @@ function Navigation({ isLoaded }) {
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
-			<li className="right_side">
+			{/* <li className="right_side">
 				<NavLink exact to="/users">
 					Users
 				</NavLink>
-			</li>
+			</li> */}
 		</ul>
 	);
 }
