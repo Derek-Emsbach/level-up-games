@@ -37,7 +37,7 @@ const GameDetail = () => {
 		history.push(`games/${gameId}/update`);
 	};
 	const createReviewForm = () => {
-		history.push(`/reviewform`);
+		history.push(`${gameId}/reviewform`);
 	};
 
 	const handleDelete = () => {
@@ -68,11 +68,12 @@ const GameDetail = () => {
 
 			<div className="game-review-header">Game Reviews</div>
 			<div>
-				{isReview.length === 0 ? (
+				{/* {isReview.length === 0 ? (
 					<div className="review-form-container">
 						<ReviewForm game={game} />
 					</div>
-				) : null}
+				) : null} */}
+				<button onClick={createReviewForm}>Review Game</button>
 				<ReviewByGameId game={game} />
 			</div>
 		</div>

@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { editReviewThunk, getAllReviewsThunk, getSingleReview } from "../../store/reviews";
+import {
+	editReviewThunk,
+	getAllReviewsThunk,
+	getSingleReview,
+} from "../../store/reviews";
 
 const EditReviewForm = () => {
 	const history = useHistory();
@@ -9,37 +13,33 @@ const EditReviewForm = () => {
 	const { reviewId } = useParams();
 	const userId = useSelector((state) => state.session.user.id);
 	const review = useSelector((state) => state.review[reviewId]);
-    // const review = reviews[reviewId]
 	const [reviewText, setReviewText] = useState(review.reviewText);
 	const [rating, setRating] = useState(review.rating);
-	// const [errors, setErrors] = useState([]);
+	const [errors, setErrors] = useState([]);
 
-	useEffect(() => {
-        dispatch(getAllReviewsThunk())
-        // dispatch(getSingleReview(reviewId));
-	}, [dispatch, reviewId]);
+
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// setErrors([]);
+		setErrors([]);
 		const payload = {
-            userId,
-			reviewText,
+			userId,
+			review_text: reviewText,
 			rating,
 		};
 
-		dispatch(editReviewThunk(reviewId, payload));
-		// if (data.errors) {
-		//     setErrors([...Object.values(data.errors)]);
-		//   } else {
-		history.push(`/games/${review.gameId}`);
-		//   }
+		let data = await dispatch(editReviewThunk(reviewId, payload));
+		if (data.errors) {
+			setErrors([...Object.values(data.errors)]);
+		} else {
+			history.push(`/games/${review.gameId}`);
+		}
 	};
 
 	return (
 		<>
 			<h3>Edit Review Details</h3>
-			{/* {!!errors.length && (
+			{!!errors.length && (
           <ul>
             {errors.map((error, idx) => (
               <li className="edit-errors" key={idx}>
@@ -47,7 +47,7 @@ const EditReviewForm = () => {
               </li>
             ))}
           </ul>
-        )} */}
+        )}
 			<form onSubmit={handleSubmit}>
 				<label>Review</label>
 				<input
@@ -60,9 +60,9 @@ const EditReviewForm = () => {
 					style={{ display: "block" }}
 					type="number"
 					value={rating}
-					min={1}
-					max={10}
-					required
+					// min={1}
+					// max={10}
+					// required
 					onChange={(e) => setRating(e.target.value)}
 				></input>
 

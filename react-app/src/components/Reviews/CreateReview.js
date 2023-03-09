@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createReviewThunk } from "../../store/reviews";
 
-const ReviewForm = ({ game }) => {
+const ReviewForm = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
+  const {gameId} = useParams()
 	const sessionUser = useSelector((state) => state.session.user);
 
 	const [rating, setRating] = useState(0);
@@ -16,17 +17,17 @@ const ReviewForm = ({ game }) => {
 		e.preventDefault();
 		setErrors([]);
 		const payload = {
-			game_id: game.id,
+			game_id: gameId,
 			review_text: reviewText,
 			rating,
 		};
 		let data = await dispatch(createReviewThunk(payload));
 
 		if (data) {
-			setErrors([...Object.values(data.error)]);
-		} else {
-      console.log(errors);
-			history.push(`/games/${game.id}`);
+			setErrors([...Object.values(data.errors)]);
+		}
+    else {
+			history.push(`/games/${gameId}`);
 		}
 	};
 
@@ -35,7 +36,7 @@ const ReviewForm = ({ game }) => {
 		setRating(0);
 		setReviewText("");
 
-		history.push(`/games/${game.id}`);
+		history.push(`/games/${gameId}`);
 
 	};
 	return (
@@ -43,7 +44,7 @@ const ReviewForm = ({ game }) => {
 			<h1>Played this game before?</h1>
 
 			<form className="create-review-form" onSubmit={handleSubmit}>
-				{!!errors.length && (
+				{/* {!!errors.length && (
 					<>
 						<ul>
 							{errors.map((error, idx) => (
@@ -53,7 +54,14 @@ const ReviewForm = ({ game }) => {
 							))}
 						</ul>
 					</>
-				)}
+				)} */}
+        <ul>
+					{errors.map((error, idx) => (
+						<li className="edit-errors" key={idx}>
+							{error}
+						</li>
+					))}
+				</ul>
 				<label>Describe your experience</label>
 				<textarea
         style={{ display: "block" }}
@@ -70,7 +78,7 @@ const ReviewForm = ({ game }) => {
 					value={rating}
 					onChange={(e) => setRating(e.target.value)}
 				/>
-				<button type="submit">Create Review</button>
+				<button>Create Review</button>
 				<button type="button" onClick={handleCancelClick}>
 					Cancel
 				</button>

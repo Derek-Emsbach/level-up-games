@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useSelector } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -19,11 +19,12 @@ import HomePage from "./components/HomePage/HomePage";
 function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
-	const user = useSelector((state) => state.session.user);
+	const currentUser = useSelector((state) => state.session.user);
 
-	// useEffect(() => {
-	// 	dispatch(authenticate()).then(() => setIsLoaded(true));
-	// }, [dispatch]);
+
+	useEffect(() => {
+		dispatch(authenticate())
+	}, [])
 
 	useEffect(() => {
 		(async () => {
@@ -33,17 +34,14 @@ function App() {
 	}, [dispatch]);
 
 
-	if (!isLoaded) {
-		return null;
-	}
-
 	return (
 		<>
-			<Navigation isLoaded={isLoaded} />
+			{!!currentUser && <Navigation isLoaded={isLoaded} />}
+			{/* <Navigation isLoaded={isLoaded} /> */}
 			{isLoaded && (
 				<Switch>
 					<Route path="/" exact={true}>
-						<AllGames />
+						{currentUser ? <AllGames /> : <HomePage />}
 					</Route>
 					<Route path="/login">
 						<LoginFormPage />
@@ -60,7 +58,7 @@ function App() {
 					<ProtectedRoute path="/games/:gameId/update" exact={true}>
 						<EditGameForm />
 					</ProtectedRoute>
-					<ProtectedRoute path="/reviewform" exact={true}>
+					<ProtectedRoute path="/games/:gameId/reviewform" exact={true}>
 						<CreateReview />
 					</ProtectedRoute>
 					<ProtectedRoute
