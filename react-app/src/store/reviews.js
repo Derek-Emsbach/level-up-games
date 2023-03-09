@@ -69,6 +69,9 @@ export const createReviewThunk = (data) => async (dispatch) => {
 	if (res.ok) {
 		const newReview = await res.json();
 		dispatch(loadReviews(newReview));
+	} else {
+		const error = await res.json();
+		return error;
 	}
 };
 
