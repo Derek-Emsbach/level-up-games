@@ -44,17 +44,6 @@ const ReviewForm = () => {
 			<h1>Played this game before?</h1>
 
 			<form className="create-review-form" onSubmit={handleSubmit}>
-				{/* {!!errors.length && (
-					<>
-						<ul>
-							{errors.map((error, idx) => (
-								<li className="edit-errors" key={idx}>
-									{console.log(error)}
-								</li>
-							))}
-						</ul>
-					</>
-				)} */}
         <ul>
 					{errors.map((error, idx) => (
 						<li className="edit-errors" key={idx}>

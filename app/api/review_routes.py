@@ -44,7 +44,6 @@ def create_new_review():
     if form.validate_on_submit():
         review_data = form.data
         game_data = request.json
-        Print(review_data)
         new_review = Review(user_id=current_user.get_id(),
                             game_id=game_data['game_id'], review_text=review_data['review_text'], rating=review_data['rating'])
 
@@ -53,7 +52,6 @@ def create_new_review():
         db.session.commit()
 
         return {new_review.id: new_review.to_dict()}
-    Print(form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @review_routes.route('/<int:id>', methods=["PATCH", "PUT"])
@@ -62,7 +60,6 @@ def edit_review(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         review_data = form.data
-        Print(review_data)
         review = Review.query.get(id)
         for key, value in review_data.items():
             setattr(review, key, value)
