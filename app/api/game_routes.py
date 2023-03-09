@@ -45,7 +45,6 @@ def create_new_game():
         db.session.add(new_game)
         db.session.commit()
         return {new_game.id: new_game.to_dict()}
-    Print(form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
