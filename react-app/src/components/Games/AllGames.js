@@ -15,14 +15,22 @@ const AllGames = () => {
 
 	return (
 		<div>
-			<h1 className="text-3xl font-bold underline">LEVEL UP</h1>
-			<h3>Game Reviews</h3>
+
 			{/* <p>Whether it just came out or you played it on NES for the first time...</p>
 			<p>Share your story and hear from other gamers like you!</p> */}
-			<div>
-				{games.map((game) => (
+			<div className="grid grid-cols-4">
+				<div className="h-100 bg-gradient-to-r from-slate-900 to-violet-700 row-span-1">
+
+				</div>
+				<div className="col-start-2 col-span-2 h-100 bg-gradient-to-r from-violet-700 to-cyan-800 row-span-1">
+
+					{games.map((game) => (
 						<SingleGame key={game.id} game={game} />
-				))}
+					))}
+				</div>
+				<div className="h-100 bg-gradient-to-r from-cyan-800 to-slate-900 row-span-1">
+
+				</div>
 			</div>
 		</div>
 	);

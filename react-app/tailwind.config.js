@@ -956,6 +956,6 @@ module.exports = {
     },
   },
   plugins: [
-    
+
   ],
 }

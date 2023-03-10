@@ -1,30 +1,36 @@
-#navigation-bar {
+/* #navigation-bar {
   display: flex;
   align-items: center;
   height: 80px;
   margin: 10px 10px;
   gap: 10px;
   border-bottom: solid 2px;
-}
+} */
 
 .profile-dropdown {
+  margin: 10px;
+  margin-right: 20px;
+  padding-top: 5px;
   position: absolute;
+  flex: content;
+  flex-direction: row;
+  padding-right: 20px;
 }
 
 .hidden {
   display: none;
 }
 
-.left_side {
+/* .left_side {
   display: flex;
   flex: 1;
   height: 48px;
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-}
+} */
 
-.right_side {
+/* .right_side {
   display: flex;
   cursor: pointer;
   align-items: center;
@@ -37,4 +43,4 @@
   height: auto;
   border: solid green 10px;
   border-radius: 50%;
-}
+} */
