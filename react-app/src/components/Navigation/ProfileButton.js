@@ -4,6 +4,8 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -38,17 +40,19 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+    <div className="mr-15">
+      <button className="pl-5 pr-5" onClick={openMenu}>
+        {/* <i style={{ color: "FFF" }} className="fa-user"></i>
+         */}
+         <FontAwesomeIcon style={{ color: "04d9ff" }} icon={faUser} />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
+            <li className="text-sky-400 pr-10">{user.username}</li>
+            <li className="text-sky-400 pr-10">{user.email}</li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <button className="text-sky-600 pr-10" onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
@@ -67,7 +71,7 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
-    </>
+    </div>
   );
 }
 

@@ -39,22 +39,22 @@ const ReviewByGameId = ({ game }) => {
 	};
 	return specificReview.map((review) => {
 		return (
-			<div className="review-box">
+			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full">
 				<br></br>
-				<div className="username">{review?.User?.username}</div>
+				<div className="text-lg">{review?.User?.username}</div>
 				<br></br>
 				{/* <div>{review.createdAt.slice(0, 10)}</div> */}
-				<h1>{review.rating}/10</h1>
-				<div>{review.reviewText} </div>
+				<h1 className="text-4xl p-10">{review.rating}/10</h1>
+				<div className="text-xl p-4">{review.reviewText} </div>
 				<div>
 					{/* <FontAwesomeIcon className="star" icon={faStar} /> */}
 				</div>
 				<div className="deleteButton">
 					{review.userId === sessionUser?.id && (
-						<>
-							<button onClick={handleEditClick}>Edit</button>
-							<button onClick={handleDeleteClick}>Delete</button>
-						</>
+						<div className="p-6">
+							<button className="rounded-none bg-purple-700 w-20" onClick={handleEditClick}>Edit</button>
+							<button className="rounded-none bg-red-900 w-20" onClick={handleDeleteClick}>Delete</button>
+						</div>
 					)}
 				</div>
 				<br></br>
@@ -64,7 +64,7 @@ const ReviewByGameId = ({ game }) => {
 };
 
 // 	return specificReview.map((review) => {
-//    
+//
 // 		<div className="review-box">
 // 			<br></br>
 // 			<div className="username">{review.rating}</div>

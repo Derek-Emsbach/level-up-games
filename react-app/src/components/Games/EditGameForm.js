@@ -44,66 +44,108 @@ const EditGameForm = () => {
 			setErrors([...Object.values(data.errors)]);
 		} else {
 			history.push(`/`);
-
 		}
 	};
 
+	const handleCancelClick = (e) => {
+		e.preventDefault();
+
+		history.push(`/`);
+	};
+
 	return (
-		<>
-			<h3>Edit Game Details</h3>
-			{!!errors.length && (
-				<ul>
-					{errors.map((error, idx) => (
-						<li className="edit-errors" key={idx}>
-							{error}
-						</li>
-					))}
-				</ul>
-			)}
-			<form onSubmit={handleSubmit}>
-				<label>Title</label>
-				<input
-					style={{ display: "block" }}
-					value={title}
-					onChange={(e) => setTitle(e.target.value)}
-				></input>
-				<label>Preview Image</label>
-				<input
-					style={{ display: "block" }}
-					value={previewImage}
-					onChange={(e) => setPreviewImage(e.target.value)}
-				></input>
-				<label>Description</label>
-				{/* {"condition to check for" ? "do the true version" : "do the false version"} */}
-				{tooLong ? <h1>Description is too long</h1> : null}
-				<textarea
-					style={{ display: "block" }}
-					value={description}
-					onChange={(e) => {
-						setDescription(e.target.value);
-					}}
-				></textarea>
-				<label>Developer</label>
-				<input
-					style={{ display: "block" }}
-					value={developer}
-					onChange={(e) => setDeveloper(e.target.value)}
-				></input>
-				<label>Genre</label>
-				<input
-					style={{ display: "block" }}
-					value={genre}
-					onChange={(e) => setGenre(e.target.value)}
-				></input>
-				<label>Platform</label>
-				<input
-					style={{ display: "block" }}
-					value={platform}
-					onChange={(e) => setPlatform(e.target.value)}
-				></input>
-				<button disabled={tooLong}>Edit Game!</button>
-			</form>
-		</>
+		<div className="flex justify-center h-fit bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-40">
+			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3 h-3/4 p-5 ">
+				<h3 className="flex justify-center text-slate-50 text-2xl pb-6">
+					Edit Game Details
+				</h3>
+				{!!errors.length && (
+					<ul>
+						{errors.map((error, idx) => (
+							<li className="text-red-500" key={idx}>
+								{error}
+							</li>
+						))}
+					</ul>
+				)}
+				<div className="flex flex-row justify-center">
+					<form
+						className="flex flex-col justify-start"
+						onSubmit={handleSubmit}
+					>
+						<label className="text-slate-50 text-lg">Title</label>
+						<input
+						className="p-2 w-80"
+							style={{ display: "block" }}
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
+						></input>
+						<label className="text-slate-50 text-lg">
+							Preview Image
+						</label>
+						<input
+						className="p-2 w-80"
+							style={{ display: "block" }}
+							value={previewImage}
+							onChange={(e) => setPreviewImage(e.target.value)}
+						></input>
+						<label className="text-slate-50 text-lg">
+							Description
+						</label>
+						{/* {"condition to check for" ? "do the true version" : "do the false version"} */}
+						{tooLong ? <h1>Description is too long</h1> : null}
+						<textarea
+						className="p-2 w-80"
+							style={{ display: "block" }}
+							value={description}
+							onChange={(e) => {
+								setDescription(e.target.value);
+							}}
+						></textarea>
+						<label className="text-slate-50 text-lg">
+							Developer
+						</label>
+						<input
+						className="p-2 w-80"
+							style={{ display: "block" }}
+							value={developer}
+							onChange={(e) => setDeveloper(e.target.value)}
+						></input>
+						<label className="text-slate-50 text-lg">Genre</label>
+						<input
+						className="p-2 w-80"
+							style={{ display: "block" }}
+							value={genre}
+							onChange={(e) => setGenre(e.target.value)}
+						></input>
+						<label className="text-slate-50 text-lg">
+							Platform
+						</label>
+						<input
+						className="p-2 w-80"
+							style={{ display: "block" }}
+							value={platform}
+							onChange={(e) => setPlatform(e.target.value)}
+						></input>
+						<div className="p-4 pt-8 flex flex-col justify-center text-lg">
+							<button
+								className="text-slate-50 rounded-tl-lg rounded-tr-lg bg-sky-700 hover:bg-sky-900 p-1"
+								disabled={tooLong}
+							>
+								Edit Game!
+							</button>
+							<button
+								className="text-slate-50 rounded-bl-lg rounded-br-lg bg-gray-500 hover:bg-gray-700 p-1 pb-2"
+								type="button"
+								onClick={handleCancelClick}
+							>
+								Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	);
 };
 
