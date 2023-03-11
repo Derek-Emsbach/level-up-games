@@ -45,15 +45,15 @@ export const getSingleReview = (reviewId) => async (dispatch) => {
 	}
 };
 
-// export const getAllReviewsByGameId = (gameId) => async (dispatch) => {
-//     const response = await fetch(`/api/reviews/${gameId}`);
+export const getAllReviewsByGameId = (gameId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${gameId}`);
 
-//     if (response.ok) {
-//       const review = await response.json();
-//       dispatch(loadReviews(review));
-//       return review
-//     }
-//   };
+    if (response.ok) {
+      const review = await response.json();
+      dispatch(loadReviews(review));
+      return review
+    }
+  };
 
 export const createReviewThunk = (data) => async (dispatch) => {
 	const reviewData = JSON.stringify(data);
@@ -98,6 +98,7 @@ export const editReviewThunk = (id, data) => async (dispatch) => {
 
 export const deleteReviewThunk = (data) => async (dispatch) => {
 	const body = JSON.stringify(data);
+	console.log(body, "here")
 
 
 	const res = await fetch(`/api/reviews/${data.reviewToDelete}`, {

@@ -13,13 +13,16 @@ const ReviewByGameId = ({ game }) => {
 	const reviews = useSelector((state) => state.review);
 	const user = useSelector((store) => store.session.user);
 	const sessionUser = useSelector((state) => state.session.user);
-	const userId = sessionUser.id
+	const userId = sessionUser
+
 
 	const allReviews = Object.values(reviews);
 	const specificReview = allReviews.filter(
 		(review) => game.id === review.gameId
 	);
+	const reviewer = specificReview.userId
 
+	console.log(user.username)
 
 	useEffect(() => {
 		dispatch(getAllReviewsThunk());
@@ -34,14 +37,14 @@ const ReviewByGameId = ({ game }) => {
 		const reviewById = specificReview.filter((userReview) => userReview.userId === sessionUser.id)
 		const reviewToDelete = reviewById[0].id
 		if(reviewById.length > 0){
-			dispatch(deleteReviewThunk({reviewToDelete, user_id: userId}));
+			dispatch(deleteReviewThunk({reviewToDelete, user_id: userId.id}));
 		}
 	};
 	return specificReview.map((review) => {
 		return (
-			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full">
+			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full text-slate-200">
 				<br></br>
-				<div className="text-lg">{review?.User?.username}</div>
+				<div className="text-lg">{user.username}</div>
 				<br></br>
 				{/* <div>{review.createdAt.slice(0, 10)}</div> */}
 				<h1 className="text-4xl p-10">{review.rating}/10</h1>

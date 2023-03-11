@@ -17,8 +17,6 @@ const EditReviewForm = () => {
 	const [rating, setRating] = useState(review.rating);
 	const [errors, setErrors] = useState([]);
 
-
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setErrors([]);
@@ -36,39 +34,58 @@ const EditReviewForm = () => {
 		}
 	};
 
-	return (
-		<>
-			<h3>Edit Review Details</h3>
-			{!!errors.length && (
-          <ul>
-            {errors.map((error, idx) => (
-              <li className="edit-errors" key={idx}>
-                {error}
-              </li>
-            ))}
-          </ul>
-        )}
-			<form onSubmit={handleSubmit}>
-				<label>Review</label>
-				<input
-					style={{ display: "block" }}
-					value={reviewText}
-					onChange={(e) => setReviewText(e.target.value)}
-				></input>
-				<label>Rating</label>
-				<input
-					style={{ display: "block" }}
-					type="number"
-					value={rating}
-					// min={1}
-					// max={10}
-					// required
-					onChange={(e) => setRating(e.target.value)}
-				></input>
+	const handleCancelClick = (e) => {
+		e.preventDefault();
 
-				<button>Edit Review!</button>
-			</form>
-		</>
+		history.push(`/`);
+	};
+
+	return (
+		<div className="flex justify-center h-screen bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-40">
+			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3 h-fit p-5 ">
+				<h3 className="flex justify-center text-slate-50 text-2xl pb-6">
+					Edit Review Details
+				</h3>
+				{!!errors.length && (
+					<ul className="border rounded-3xl p-2 bg-slate-900">
+						{errors.map((error, idx) => (
+							<li className="flex justify-center text-red-600" key={idx}>
+								{error}
+							</li>
+						))}
+					</ul>
+				)}
+				<div className="flex flex-row justify-center">
+					<form className="flex flex-col justify-start" onSubmit={handleSubmit}>
+						<label className="text-slate-50 text-lg">Review</label>
+						<input
+							className="p-2 w-80 bg-slate-600"
+							value={reviewText}
+							onChange={(e) => setReviewText(e.target.value)}
+						></input>
+						<label className="text-slate-50 text-lg">Rating</label>
+						<input
+							className="p-2 w-80 bg-slate-600"
+							type="number"
+							value={rating}
+							// min={1}
+							// max={10}
+							// required
+							onChange={(e) => setRating(e.target.value)}
+						></input>
+
+						<button className="mt-10 text-slate-50 rounded-tl-lg rounded-tr-lg bg-sky-700 hover:bg-sky-900 p-1">Edit Review!</button>
+						<button
+								className="mb-10 text-slate-50 rounded-bl-lg rounded-br-lg bg-gray-500 hover:bg-gray-700 p-1 pb-2"
+								type="button"
+								onClick={handleCancelClick}
+							>
+								Cancel
+							</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	);
 };
 

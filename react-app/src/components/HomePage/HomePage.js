@@ -5,65 +5,82 @@ import { Modal } from "../../context/Modal";
 import LoginFormPage from "../LoginFormPage";
 import { login } from "../../store/session";
 import LoginFormModal from "../LoginFormModal";
-import './homepage.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
 
 function HomePage() {
-  const dispatch = useDispatch();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
+	const dispatch = useDispatch();
+  const history = useHistory()
+	const [modalOpen, setModalOpen] = useState(false);
+	const [loginModalOpen, setLoginModalOpen] = useState(false);
 
-  const demo = async (e) => {
-    e.preventDefault();
-    const user = {
-      email: "demo@aa.io",
-      password: "password",
-    };
-    setModalOpen(false);
-    dispatch(login(user.email, user.password));
-  };
+	const demo = async (e) => {
+		e.preventDefault();
+		const user = {
+			email: "demo@aa.io",
+			password: "password",
+		};
+		setModalOpen(false);
+		dispatch(login(user.email, user.password));
+	};
 
-  return (
-    <div className="Splash">
-      <div className="nav_bar">
-        <div className="icon">
+  const loginPage = async (e) => {
 
-          <h1>Level up</h1>
-        </div>
+    history.push('/login')
+  }
 
+  const signupPage = async (e) => {
 
-        <div className="splash-page">
-          <button className="signup-button" onClick={demo}>
-            Demo User
-          </button>
+    history.push('/signup')
+  }
 
-          <button
-            className="login-button"
-            onClick={() => {
-              setLoginModalOpen(true);
-            }}
-          >
-            {" "}
-            Login{" "}
-          </button>
-          {loginModalOpen && (
-            <LoginFormModal setLoginModalOpen={setLoginModalOpen} />
-          )}
+	return (
+		<div className="flex flex-col h-screen bg-gradient-to-r from-sky-600 to-purple-900">
+			<div className="flex flex-row justify-center p-20">
+				<FontAwesomeIcon
+					style={{ color: "04d9ff" }}
+					className="fa-4x"
+					icon={faArrowTurnUp}
+				/>
+				<h2 className="text-8xl text-slate-200">Level up</h2>
+				<h3 className="text-slate-200 text-3xl underline decoration-sky-500 decoration-double underline-offset-8">
+					Game Reviews
+				</h3>
+			</div>
+			<div className="flex flex-row justify-center content-center self-center rounded-bl-lg w-1/3">
+				<div className="text-slate-300 bg-slate-900 p-5 border-2 rounded-bl-lg border-slate-200 flex place-items-center self-center justify-center content-center items-center">
+					<div className="flex flex-col"></div>
+					<button className="p-5 text-lg hover:text-sky-500" onClick={demo}>
+						Demo User
+					</button>
 
-          <button
-            className="signup-button"
-            onClick={() => {
-              setModalOpen(true);
-            }}
-          >
-            {" "}
-            Sign Up{" "}
-          </button>
-          {modalOpen && <Modal setOpenModal={setModalOpen} />}
-        </div>
-      </div>
+					<button
+						className="p-5 text-lg hover:text-sky-500"
+						onClick={() => {
+							loginPage();
+						}}
+					>
+						{" "}
+						Login{" "}
+					</button>
+					{loginModalOpen && (
+						<LoginFormModal setLoginModalOpen={setLoginModalOpen} />
+					)}
 
-    </div>
-  );
+					<button
+						className="p-5 text-lg hover:text-sky-500"
+						onClick={() => {
+							signupPage();
+						}}
+					>
+						{" "}
+						Sign Up{" "}
+					</button>
+					{modalOpen && <Modal setOpenModal={setModalOpen} />}
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default HomePage;
