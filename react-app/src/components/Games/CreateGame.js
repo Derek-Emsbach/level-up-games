@@ -52,8 +52,8 @@ const CreateGame = () => {
 	};
 
 	return (
-		<div className="flex justify-center h-fit bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-20 mb-20">
-			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3  p-5">
+		<div className="flex justify-center h-screen bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-20 mb-20">
+			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3 h-fit p-5">
 				<h3 className="flex justify-center text-slate-50 text-2xl pb-6">
 					Add a game you've played!
 				</h3>
@@ -63,22 +63,36 @@ const CreateGame = () => {
 						className="flex flex-col justify-start"
 						onSubmit={handleSubmit}
 					>
-						<ul className="border rounded-3xl p-2 bg-slate-900">
+						{/* <ul className="border rounded-3xl p-2 bg-slate-900">
 							{errors.map((error, idx) => (
 								<li className="flex justify-center text-red-600 " key={idx}>
 									{error}
 								</li>
 							))}
-						</ul>
+						</ul> */}
+						{!!errors.length && (
+							<ul className="border rounded-3xl p-2 bg-slate-900">
+								{errors.map((error, idx) => (
+									<li
+										className="flex justify-center text-red-600"
+										key={idx}
+									>
+										{error}
+									</li>
+								))}
+							</ul>
+						)}
 						<label className="text-slate-50 text-lg">Title</label>
 						<input
-							className="p-2 w-80 bg-slate-600"
+							className="p-2 w-80 bg-slate-600 caret-pink-500"
 							placeholder="Doom, Last of Us, Metal Gear Solid..."
 							style={{ display: "block" }}
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
 						></input>
-						<label className="text-slate-50 text-lg">Preview Image</label>
+						<label className="text-slate-50 text-lg">
+							Preview Image
+						</label>
 						<input
 							className="p-2 w-80 bg-slate-600"
 							placeholder="paste link of game image..."
@@ -86,11 +100,13 @@ const CreateGame = () => {
 							value={previewImage}
 							onChange={(e) => setPreviewImage(e.target.value)}
 						></input>
-						<label className="text-slate-50 text-lg">Description</label>
+						<label className="text-slate-50 text-lg">
+							Description
+						</label>
 						{/* {"condition to check for" ? "do the true version" : "do the false version"} */}
 						{tooLong ? <h1>Description is too long</h1> : null}
 						<textarea
-							className="p-2 w-80 bg-slate-600"
+							className="p-2 w-80 bg-slate-600 scrollbar-hide"
 							placeholder="game synopsis from your perspective..."
 							style={{ display: "block" }}
 							value={description}
@@ -98,7 +114,9 @@ const CreateGame = () => {
 								setDescription(e.target.value);
 							}}
 						></textarea>
-						<label className="text-slate-50 text-lg">Developer</label>
+						<label className="text-slate-50 text-lg">
+							Developer
+						</label>
 						<input
 							className="p-2 w-80 bg-slate-600"
 							placeholder="Nintendo, Sega, Capcom..."
@@ -114,7 +132,9 @@ const CreateGame = () => {
 							value={genre}
 							onChange={(e) => setGenre(e.target.value)}
 						></input>
-						<label className="text-slate-50 text-lg">Platform</label>
+						<label className="text-slate-50 text-lg">
+							Platform
+						</label>
 						<input
 							className="p-2 w-80 bg-slate-600"
 							placeholder="PS5, PC, NES, Gamecube..."

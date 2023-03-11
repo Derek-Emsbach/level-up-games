@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
 import "./Navigation.css";
+import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
@@ -19,7 +19,7 @@ function Navigation({ isLoaded }) {
 								{/* Home */}
 								<FontAwesomeIcon
 									style={{ color: "04d9ff" }}
-									className="fa-4x"
+									className="fa-4x animate-pulse"
 									icon={faArrowTurnUp}
 								/>
 								{/* <img
