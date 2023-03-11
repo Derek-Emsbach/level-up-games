@@ -52,12 +52,12 @@ const GameDetail = () => {
 			<div className="h-100 bg-gradient-to-r from-slate-600 to-violet-700 row-span-1"></div>
 			<div className="flex flex-col col-start-2 col-span-2 h-100 bg-gradient-to-r from-violet-700 to-cyan-800 row-span-1">
 					<div className="flex place-items-center self-center justify-center content-center items-center text-white">
-						<div className="flex self-center justify-center content-center items-center col-start-2 col-span-2 text-8xl rounded-lg bg-slate-900 mt-8 p-10">{game.title}</div>
+						<div className="flex self-center justify-center content-center items-center col-start-2 col-span-2 text-8xl text-slate-300 rounded-lg bg-slate-900 mt-8 p-10 border-8 border-white ">{game.title}</div>
 					</div>
 					<div className="flex place-items-center self-center justify-center content-center items-center text-slate-400 m-6">
 						<strong>{game.developer}</strong>
 					</div>
-				<div className="flex flex-col  bg-slate-900 text-slate-200 rounded-lg items-center w-100 h-70 p-8 pt-6 pb-8 mt-6 mb-6 border-4 border-sky-500">
+				<div className="flex flex-col  bg-slate-900 text-slate-200 rounded-lg items-center w-100 h-70 p-8 pt-6 pb-8 mt-6 mb-6 border-4 border-sky-400">
 					<div className="flex flex-row text-2xl border-double border-4 border-violet-700 rounded-lg p-2">
 						<strong className="text-sky-600 pr-5">
 							{user.username}

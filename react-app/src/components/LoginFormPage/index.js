@@ -23,6 +23,15 @@ function LoginFormPage() {
 		}
 	};
 
+	const demo = async (e) => {
+		e.preventDefault();
+		const user = {
+			email: "demo@aa.io",
+			password: "password",
+		};
+		dispatch(login(user.email, user.password));
+	};
+
 	return (
 		<div className="flex justify-center h-screen bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-80">
 			<div className="flex flex-row justify-center p-20">
@@ -32,9 +41,11 @@ function LoginFormPage() {
 					icon={faArrowTurnUp}
 				/>
 				<h2 className="text-8xl text-slate-200">Level up</h2>
-				<h3 className="text-slate-200 text-3xl underline decoration-sky-500 decoration-double underline-offset-8">
+				<div></div>
+				<div className="flex flex-row justify-center text-slate-200 text-3xl underline decoration-sky-500 decoration-double underline-offset-8">
 					Game Reviews
-				</h3>
+
+				</div>
 			</div>
 			<div className="flex flex-col justify-self-center border bg-black rounded-md w-fill p-5">
 				<h1 className="flex justify-center text-slate-50 text-2xl pb-6">
@@ -76,6 +87,12 @@ function LoginFormPage() {
 						>
 							Log In
 						</button>
+						<button
+						className="text-slate-50 mt-10 rounded-lg text-lg bg-sky-600 hover:text-sky-500"
+						onClick={demo}
+					>
+						Demo User
+					</button>
 					</form>
 				</div>
 			</div>

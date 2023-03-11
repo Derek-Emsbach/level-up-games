@@ -24,7 +24,7 @@ const SingleGame = ({
 
 	return (
 
-		<div className="flex flex-col  bg-slate-900 text-slate-200 rounded-lg items-center w-100 h-70 p-8 pt-6 pb-8 mt-6 mb-6 hover:border-2 border-sky-500">
+		<div className="flex flex-col  bg-slate-800 text-slate-200 rounded-lg items-center w-100 h-70 p-8 pt-6 pb-8 mt-6 mb-6 hover:border-4 border-sky-400">
 			<div className="flex flex-col justify-center">
 				<h3 className=" h-10 w-30 p-1 text-3xl">{title}</h3>
 				<div className="flex justify-center p-1 text-xs">{platform}</div>
