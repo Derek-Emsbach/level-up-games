@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
@@ -34,11 +34,13 @@ function SignupFormPage() {
 	return (
 		<div className="flex justify-center h-screen bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-80">
 			<div className="flex flex-row justify-center p-20">
-				<FontAwesomeIcon
-					style={{ color: "04d9ff" }}
-					className="fa-4x"
-					icon={faArrowTurnUp}
-				/>
+				<NavLink exact to="/">
+					<FontAwesomeIcon
+						style={{ color: "04d9ff"  }}
+						className="fa-4x hover:text-amber-400"
+						icon={faArrowTurnUp}
+					/>
+				</NavLink>
 				<h2 className="text-8xl text-slate-200">Level up</h2>
 				<h3 className="text-slate-200 text-3xl underline decoration-sky-500 decoration-double underline-offset-8">
 					Game Reviews
@@ -49,16 +51,15 @@ function SignupFormPage() {
 					Sign Up
 				</h1>
 				<form className="flex flex-col h-fit" onSubmit={handleSubmit}>
+				{!!errors.length && (
 					<ul className="border rounded-3xl p-2 bg-slate-900">
 						{errors.map((error, idx) => (
-							<li
-								className="flex justify-center text-red-600 "
-								key={idx}
-							>
+							<li className="flex justify-center text-red-600" key={idx}>
 								{error}
 							</li>
 						))}
 					</ul>
+				)}
 					<label className="flex flex-col text-slate-50 text-lg p-2">
 						Email
 						<input

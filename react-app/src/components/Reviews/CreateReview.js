@@ -49,18 +49,20 @@ const ReviewForm = () => {
 						className="flex flex-col justify-start"
 						onSubmit={handleSubmit}
 					>
-						<ul className="border rounded-3xl p-2 bg-slate-900">
-							{errors.map((error, idx) => (
-								<li className="flex justify-center text-red-600" key={idx}>
-									{error}
-								</li>
-							))}
-						</ul>
+						{!!errors.length && (
+					<ul className="border rounded-3xl p-2 bg-slate-900">
+						{errors.map((error, idx) => (
+							<li className="flex justify-center text-red-600" key={idx}>
+								{error}
+							</li>
+						))}
+					</ul>
+				)}
 						<label className="text-slate-50 text-lg">
 							Describe your experience
 						</label>
 						<textarea
-							className="p-2 w-80 bg-slate-600"
+							className="p-2 w-80 bg-slate-600 scrollbar-hide"
 							type="textarea"
 							placeholder="write about your experience here..."
 							value={reviewText}

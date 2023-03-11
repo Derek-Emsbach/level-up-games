@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
 import "./LoginForm.css";
@@ -35,16 +35,17 @@ function LoginFormPage() {
 	return (
 		<div className="flex justify-center h-screen bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-80">
 			<div className="flex flex-row justify-center p-20">
-				<FontAwesomeIcon
-					style={{ color: "04d9ff" }}
-					className="fa-4x"
-					icon={faArrowTurnUp}
-				/>
+				<NavLink exact to="/">
+					<FontAwesomeIcon
+						style={{ color: "04d9ff" }}
+						className="fa-4x"
+						icon={faArrowTurnUp}
+					/>
+				</NavLink>
 				<h2 className="text-8xl text-slate-200">Level up</h2>
 				<div></div>
 				<div className="flex flex-row justify-center text-slate-200 text-3xl underline decoration-sky-500 decoration-double underline-offset-8">
 					Game Reviews
-
 				</div>
 			</div>
 			<div className="flex flex-col justify-self-center border bg-black rounded-md w-fill p-5">
@@ -88,11 +89,11 @@ function LoginFormPage() {
 							Log In
 						</button>
 						<button
-						className="text-slate-50 mt-10 rounded-lg text-lg bg-sky-600 hover:text-sky-500"
-						onClick={demo}
-					>
-						Demo User
-					</button>
+							className="text-slate-50 mt-10 rounded-lg text-lg bg-sky-600 hover:text-sky-500"
+							onClick={demo}
+						>
+							Demo User
+						</button>
 					</form>
 				</div>
 			</div>
