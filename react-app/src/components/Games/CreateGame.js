@@ -63,9 +63,9 @@ const CreateGame = () => {
 						className="flex flex-col justify-start"
 						onSubmit={handleSubmit}
 					>
-						<ul>
+						<ul className="border rounded-3xl p-2 bg-slate-900">
 							{errors.map((error, idx) => (
-								<li className="text-red-800" key={idx}>
+								<li className="flex justify-center text-red-600 " key={idx}>
 									{error}
 								</li>
 							))}

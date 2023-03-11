@@ -60,9 +60,9 @@ const EditGameForm = () => {
 					Edit Game Details
 				</h3>
 				{!!errors.length && (
-					<ul>
+					<ul className="border rounded-3xl p-2 bg-slate-900">
 						{errors.map((error, idx) => (
-							<li className="text-red-500" key={idx}>
+							<li className="flex justify-center text-red-600" key={idx}>
 								{error}
 							</li>
 						))}
@@ -75,7 +75,7 @@ const EditGameForm = () => {
 					>
 						<label className="text-slate-50 text-lg">Title</label>
 						<input
-						className="p-2 w-80"
+						className="p-2 w-80 bg-slate-600"
 							style={{ display: "block" }}
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
@@ -84,7 +84,7 @@ const EditGameForm = () => {
 							Preview Image
 						</label>
 						<input
-						className="p-2 w-80"
+						className="p-2 w-80 bg-slate-600"
 							style={{ display: "block" }}
 							value={previewImage}
 							onChange={(e) => setPreviewImage(e.target.value)}
@@ -95,7 +95,7 @@ const EditGameForm = () => {
 						{/* {"condition to check for" ? "do the true version" : "do the false version"} */}
 						{tooLong ? <h1>Description is too long</h1> : null}
 						<textarea
-						className="p-2 w-80"
+						className="p-2 w-80 bg-slate-600"
 							style={{ display: "block" }}
 							value={description}
 							onChange={(e) => {
@@ -106,14 +106,14 @@ const EditGameForm = () => {
 							Developer
 						</label>
 						<input
-						className="p-2 w-80"
+						className="p-2 w-80 bg-slate-600"
 							style={{ display: "block" }}
 							value={developer}
 							onChange={(e) => setDeveloper(e.target.value)}
 						></input>
 						<label className="text-slate-50 text-lg">Genre</label>
 						<input
-						className="p-2 w-80"
+						className="p-2 w-80 bg-slate-600"
 							style={{ display: "block" }}
 							value={genre}
 							onChange={(e) => setGenre(e.target.value)}
@@ -122,7 +122,7 @@ const EditGameForm = () => {
 							Platform
 						</label>
 						<input
-						className="p-2 w-80"
+						className="p-2 w-80 bg-slate-600"
 							style={{ display: "block" }}
 							value={platform}
 							onChange={(e) => setPlatform(e.target.value)}

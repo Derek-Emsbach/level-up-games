@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Navigation.css";
 import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
+import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
@@ -31,15 +31,15 @@ function Navigation({ isLoaded }) {
 						</li>
 						<li className="flex justify-between pl-5">
 							<div className="flex flex-row justify-evenly gap-x-3 text-xl font-semibold dark:text-white">
-								<h1 className="text-3xl font-bold">LEVEL UP</h1>
-								<h3 className="flex content-center underline decoration-sky-400 decoration-double underline-offset-4">
+								<h1 className="text-5xl font-bold">LEVEL UP</h1>
+								<h3 className="flex content-center text-3xl underline decoration-sky-400 decoration-double underline-offset-4">
 									Game Reviews
 								</h3>
 							</div>
 						</li>
 					</div>
 					<div>
-						<li className="bg-transparent hover:bg-blue-500 text-sky-400 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+						<li className="mt-2 bg-transparent hover:bg-blue-500 text-sky-400 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
 							<NavLink exact to="/gameform">
 								<div>
 								Add a Game you've played!
@@ -50,7 +50,7 @@ function Navigation({ isLoaded }) {
 					</div>
 					<div>
 						{isLoaded && (
-							<li className="p-2 m-25 rounded-full ring-2 ring-gray-300 dark:ring-sky-500">
+							<li className="p-2 mt-2 mr-20 m-25 rounded-full ring-2 ring-gray-300 dark:ring-sky-500">
 								<ProfileButton user={sessionUser} />
 							</li>
 						)}
