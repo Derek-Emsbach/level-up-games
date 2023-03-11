@@ -55,8 +55,8 @@ const ReviewByGameId = ({ game }) => {
 				<div className="deleteButton">
 					{review.userId === sessionUser?.id && (
 						<div className="p-6">
-							<button className="rounded-none bg-purple-700 w-20" onClick={handleEditClick}>Edit</button>
-							<button className="rounded-none bg-red-900 w-20" onClick={handleDeleteClick}>Delete</button>
+							<button className="rounded-none bg-purple-700 w-20 hover:bg-purple-900 " onClick={handleEditClick}>Edit</button>
+							<button className="rounded-none bg-red-700 w-20 hover:bg-red-900" onClick={handleDeleteClick}>Delete</button>
 						</div>
 					)}
 				</div>

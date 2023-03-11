@@ -84,7 +84,7 @@ const CreateGame = () => {
 						)}
 						<label className="text-slate-50 text-lg">Title</label>
 						<input
-							className="p-2 w-80 bg-slate-600"
+							className="p-2 w-80 bg-slate-600 caret-pink-500"
 							placeholder="Doom, Last of Us, Metal Gear Solid..."
 							style={{ display: "block" }}
 							value={title}
