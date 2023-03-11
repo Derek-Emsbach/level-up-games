@@ -52,8 +52,8 @@ const CreateGame = () => {
 	};
 
 	return (
-		<div className="flex justify-center h-screen bg-gradient-to-r from-slate-900 to-violet-700 pt-20">
-			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3 h-3/4 p-5">
+		<div className="flex justify-center h-fit bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-20 mb-20">
+			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3  p-5">
 				<h3 className="flex justify-center text-slate-50 text-2xl pb-6">
 					Add a game you've played!
 				</h3>
@@ -65,14 +65,14 @@ const CreateGame = () => {
 					>
 						<ul>
 							{errors.map((error, idx) => (
-								<li className="edit-errors" key={idx}>
+								<li className="text-red-800" key={idx}>
 									{error}
 								</li>
 							))}
 						</ul>
 						<label className="text-slate-50 text-lg">Title</label>
 						<input
-							className="p-2 w-80"
+							className="p-2 w-80 bg-slate-600"
 							placeholder="Doom, Last of Us, Metal Gear Solid..."
 							style={{ display: "block" }}
 							value={title}
@@ -80,7 +80,7 @@ const CreateGame = () => {
 						></input>
 						<label className="text-slate-50 text-lg">Preview Image</label>
 						<input
-							className="p-2 w-80"
+							className="p-2 w-80 bg-slate-600"
 							placeholder="paste link of game image..."
 							style={{ display: "block" }}
 							value={previewImage}
@@ -90,7 +90,7 @@ const CreateGame = () => {
 						{/* {"condition to check for" ? "do the true version" : "do the false version"} */}
 						{tooLong ? <h1>Description is too long</h1> : null}
 						<textarea
-							className="p-2 w-80"
+							className="p-2 w-80 bg-slate-600"
 							placeholder="game synopsis from your perspective..."
 							style={{ display: "block" }}
 							value={description}
@@ -100,7 +100,7 @@ const CreateGame = () => {
 						></textarea>
 						<label className="text-slate-50 text-lg">Developer</label>
 						<input
-							className="p-2 w-80"
+							className="p-2 w-80 bg-slate-600"
 							placeholder="Nintendo, Sega, Capcom..."
 							style={{ display: "block" }}
 							value={developer}
@@ -108,7 +108,7 @@ const CreateGame = () => {
 						></input>
 						<label className="text-slate-50 text-lg">Genre</label>
 						<input
-							className="p-2 w-80"
+							className="p-2 w-80 bg-slate-600"
 							placeholder="Action-adventure, RPG, FPS..."
 							style={{ display: "block" }}
 							value={genre}
@@ -116,7 +116,7 @@ const CreateGame = () => {
 						></input>
 						<label className="text-slate-50 text-lg">Platform</label>
 						<input
-							className="p-2 w-80"
+							className="p-2 w-80 bg-slate-600"
 							placeholder="PS5, PC, NES, Gamecube..."
 							style={{ display: "block" }}
 							value={platform}
@@ -130,7 +130,7 @@ const CreateGame = () => {
 								Add Game!
 							</button>
 							<button
-								className="text-slate-50 rounded-bl-lg rounded-br-lg bg-gray-500 hover:bg-gray-700 p-1"
+								className="text-slate-50 rounded-bl-lg rounded-br-lg bg-gray-600 hover:bg-gray-900 p-1"
 								type="button"
 								onClick={handleCancelClick}
 							>

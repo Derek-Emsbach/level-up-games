@@ -39,7 +39,7 @@ const ReviewByGameId = ({ game }) => {
 	};
 	return specificReview.map((review) => {
 		return (
-			<div className="flex flex-col justify-center justify-items-center self-center">
+			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full">
 				<br></br>
 				<div className="text-lg">{review?.User?.username}</div>
 				<br></br>

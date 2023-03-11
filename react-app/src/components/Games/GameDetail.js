@@ -48,13 +48,13 @@ const GameDetail = () => {
 		(review) => review.userId === user.id && review.gameId === gameId
 	);
 	return (
-		<div className="grid grid-cols-4">
+		<div className="grid grid-cols-4 h-fill">
 			<div className="h-100 bg-gradient-to-r from-slate-600 to-violet-700 row-span-1"></div>
 			<div className="col-start-2 col-span-2 h-100 bg-gradient-to-r from-violet-700 to-cyan-800 row-span-1">
 					<div className="flex place-items-center self-center justify-center content-center items-center text-white">
-						<h1 className="text-8xl pt-10">{game.title}</h1>
+						<div className="text-8xl pt-10">{game.title}</div>
 					</div>
-					<div className="flex place-items-center self-center justify-center content-center items-center text-slate-400">
+					<div className="flex place-items-center self-center justify-center content-center items-center text-slate-400 m-6">
 						<strong>{game.developer}</strong>
 					</div>
 				<div className="flex flex-col  bg-slate-900 text-slate-200 rounded-lg items-center w-100 h-70 p-8 pt-6 pb-8 mt-6 mb-6 border-4 border-sky-500">
@@ -68,17 +68,17 @@ const GameDetail = () => {
 							{game.platform}
 						</strong>
 					</div>
-					<div className="flex flex-row pb-20 pt-20">
+					<div className="flex flex-col pb-20 pt-20">
 						<img
-							className="h-80 w-max pr-10"
+							className="h-full w-fill pr-10 mb-6"
 							src={game.previewImage}
 						></img>
-						<div className=" pl-15">
+						<div className="mt-6 pl-15">
 							<p>{game.description}</p>
 						</div>
 					</div>
 					{user.id === game.userId ? (
-						<div className="flex flex-row h-max w-1/6 justify-start">
+						<div className="flex flex-row w-1/6 justify-start h-8 w-max">
 							<button
 								className=" bg-purple-800 hover:bg-blue-700 text-white font-bold py-2 px-4"
 								onClick={editGameForm}
@@ -97,14 +97,14 @@ const GameDetail = () => {
 					<div className="flex justify-center justify-items-center self-center text-5xl pb-5 pt-20">
 						Game Reviews
 					</div>
-					<div>
+					<div className="flex flex-col pt-8" >
 						{/* {isReview.length === 0 ? (
 						<div className="review-form-container">
 						<ReviewForm game={game} />
 						</div>
 					) : null} */}
 						<button
-							className="flex justify-center justify-items-center self-center rounded-full bg-sky-700 w-80"
+							className="flex place-content-center justify-center justify-items-center self-center rounded-full bg-sky-700 w-80"
 							onClick={createReviewForm}
 						>
 							Review Game

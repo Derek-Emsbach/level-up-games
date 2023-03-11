@@ -54,8 +54,8 @@ const EditGameForm = () => {
 	};
 
 	return (
-		<div className="flex justify-center h-screen bg-gradient-to-r from-slate-900 to-violet-700 pt-20">
-			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3 h-3/4 p-5">
+		<div className="flex justify-center h-fit bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-40">
+			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3 h-3/4 p-5 ">
 				<h3 className="flex justify-center text-slate-50 text-2xl pb-6">
 					Edit Game Details
 				</h3>
@@ -135,7 +135,7 @@ const EditGameForm = () => {
 								Edit Game!
 							</button>
 							<button
-								className="text-slate-50 rounded-bl-lg rounded-br-lg bg-gray-500 hover:bg-gray-700 p-1"
+								className="text-slate-50 rounded-bl-lg rounded-br-lg bg-gray-500 hover:bg-gray-700 p-1 pb-2"
 								type="button"
 								onClick={handleCancelClick}
 							>
