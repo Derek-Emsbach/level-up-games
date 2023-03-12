@@ -60,7 +60,7 @@ def edit_review(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         review_data = form.data
-        Print(review_data)
+
         review = Review.query.get(id)
         for key, value in review_data.items():
             setattr(review, key, value)
@@ -76,7 +76,7 @@ def edit_review(id):
 @review_routes.route('/<int:id>', methods=["DELETE"])
 def delete_review(id):
     data = request.json
-    Print(data)
+    
     if data["user_id"] != current_user.id:
         return {"error": "You are not authorized to delete this review"}, 401
 
