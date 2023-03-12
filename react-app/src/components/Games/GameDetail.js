@@ -21,6 +21,9 @@ const GameDetail = () => {
 	const game = useSelector((state) => state.games[gameId]);
 	const user = useSelector((state) => state.session.user);
 	const reviews = useSelector((state) => Object.values(state.review));
+	console.log(reviews)
+	console.log(game)
+	console.log(user)
 
 	useEffect(() => {
 		dispatch(getAllGamesThunk());
@@ -45,8 +48,12 @@ const GameDetail = () => {
 	};
 
 	const isReview = reviews.filter(
-		(review) => review.userId === user.id && review.gameId === gameId
+		(review) => review.gameId === game.id
 	);
+	const isIsReview = isReview.filter(
+		(reviewById) => reviewById.userId === user.id
+	)
+	// console.log(isIsReview)
 	return (
 		<div className="grid grid-cols-4 h-fill">
 			<div className="h-100 bg-gradient-to-r from-slate-600 to-violet-700 row-span-1"></div>
@@ -105,12 +112,15 @@ const GameDetail = () => {
 						<ReviewForm game={game} />
 						</div>
 					) : null} */}
+					{!!isIsReview && (
+
 						<button
 							className="flex place-content-center justify-center justify-items-center self-center rounded-full bg-sky-700 w-80"
 							onClick={createReviewForm}
 						>
 							Review Game
 						</button>
+					)}
 						<ReviewByGameId game={game} />
 					</div>
 				</div>
