@@ -91,7 +91,7 @@ export const editReviewThunk = (id, data) => async (dispatch) => {
 		dispatch(loadReviews(newData));
 	} else {
 		const error = await res.json();
-	
+
 		return error;
 	}
 
@@ -99,7 +99,7 @@ export const editReviewThunk = (id, data) => async (dispatch) => {
 
 export const deleteReviewThunk = (data) => async (dispatch) => {
 	const body = JSON.stringify(data);
-	console.log(body, "here")
+	
 
 
 	const res = await fetch(`/api/reviews/${data.reviewToDelete}`, {

@@ -21,9 +21,9 @@ const GameDetail = () => {
 	const game = useSelector((state) => state.games[gameId]);
 	const user = useSelector((state) => state.session.user);
 	const reviews = useSelector((state) => Object.values(state.review));
-	console.log(reviews)
-	console.log(game)
-	console.log(user)
+	// console.log(reviews)
+	// console.log(game)
+	// console.log(user)
 
 	useEffect(() => {
 		dispatch(getAllGamesThunk());

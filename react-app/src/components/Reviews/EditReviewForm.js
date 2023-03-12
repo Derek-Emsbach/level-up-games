@@ -17,7 +17,7 @@ const EditReviewForm = () => {
 	const [rating, setRating] = useState(review.rating);
 	const [errors, setErrors] = useState([]);
 
-	console.log(review)
+	
 
 
 	const handleSubmit = async (e) => {
@@ -30,7 +30,7 @@ const EditReviewForm = () => {
 		};
 
 		let data = await dispatch(editReviewThunk(reviewId, payload));
-		console.log(data)
+
 		if (data) {
 			setErrors([...Object.values(data.errors)]);
 		} else {
