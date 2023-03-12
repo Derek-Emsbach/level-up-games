@@ -38,7 +38,7 @@ function LoginFormPage() {
 				<NavLink exact to="/">
 					<FontAwesomeIcon
 						style={{ color: "04d9ff" }}
-						className="fa-4x"
+						className="fa-4x animate-pulse"
 						icon={faArrowTurnUp}
 					/>
 				</NavLink>
