@@ -37,7 +37,7 @@ function SignupFormPage() {
 				<NavLink exact to="/">
 					<FontAwesomeIcon
 						style={{ color: "04d9ff"  }}
-						className="fa-4x hover:text-amber-400"
+						className="fa-4x animate-pulse"
 						icon={faArrowTurnUp}
 					/>
 				</NavLink>

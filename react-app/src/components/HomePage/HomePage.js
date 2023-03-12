@@ -39,16 +39,16 @@ function HomePage() {
 			<div className="flex flex-row justify-center p-20">
 				<FontAwesomeIcon
 					style={{ color: "04d9ff" }}
-					className="fa-4x"
+					className="fa-10x animate-pulse shadow"
 					icon={faArrowTurnUp}
 				/>
-				<h2 className="text-8xl text-slate-200">Level up</h2>
-				<h3 className="text-slate-200 text-3xl underline decoration-sky-500 decoration-double underline-offset-8">
+				<h2 className="text-9xl text-slate-200">Level up</h2>
+				<h3 className="text-slate-200 text-5xl underline decoration-sky-500 decoration-double underline-offset-8">
 					Game Reviews
 				</h3>
 			</div>
-			<div className="flex flex-row justify-center content-center self-center rounded-bl-lg w-1/3">
-				<div className="text-slate-300 bg-slate-900 p-5 border-2 rounded-bl-lg border-slate-200 flex place-items-center self-center justify-center content-center items-center">
+			<div className="flex flex-row justify-center content-center self-center rounded-bl-lg w-1/3 ">
+				<div className="text-slate-300 bg-slate-900 p-5 border-2 rounded-bl-lg border-slate-200 flex place-items-center self-center justify-center content-center items-center hover:border-4 border-sky-400 hover:shadow-2xl hover:shadow-sky-700 opacity-85 hover:opacity-100">
 					<div className="flex flex-col"></div>
 					<button className="p-5 text-lg hover:text-sky-500" onClick={demo}>
 						Demo User

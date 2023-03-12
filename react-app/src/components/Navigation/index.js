@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navigation.css";
-import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { faGamepad, faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
@@ -19,7 +19,7 @@ function Navigation({ isLoaded }) {
 								{/* Home */}
 								<FontAwesomeIcon
 									style={{ color: "04d9ff" }}
-									className="fa-4x animate-pulse"
+									className="fa-5x animate-pulse"
 									icon={faArrowTurnUp}
 								/>
 								{/* <img
@@ -39,11 +39,16 @@ function Navigation({ isLoaded }) {
 						</li>
 					</div>
 					<div>
-						<li className="mt-2 bg-transparent hover:bg-blue-500 text-sky-400 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+						<li className="rounded-full mt-2 bg-transparent hover:bg-indigo-600 text-sky-400 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
 							<NavLink exact to="/gameform">
-								<div>
-								Add a Game you've played!
-								<FontAwesomeIcon icon="fa-solid fa-gamepad" />
+								<div className="flex flex-row self-center">
+									<div className="pr-5">
+										<FontAwesomeIcon
+											className="pr-15 fa-2x"
+											icon={faGamepad}
+										/>
+									</div>
+									<div>Add a Game you've played!</div>
 								</div>
 							</NavLink>
 						</li>
