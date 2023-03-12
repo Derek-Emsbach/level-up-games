@@ -43,7 +43,8 @@ const EditGameForm = () => {
 		if (data) {
 			setErrors([...Object.values(data.errors)]);
 		} else {
-			history.push(`/`);
+			alert("Game Edit successful!")
+			history.push(`/games/${gameId}`);
 		}
 	};
 

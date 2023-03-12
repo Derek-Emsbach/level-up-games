@@ -26,6 +26,7 @@ const ReviewForm = () => {
 		if (data) {
 			setErrors([...Object.values(data.errors)]);
 		} else {
+			alert("Review created succesfully!")
 			history.push(`/games/${gameId}`);
 		}
 	};

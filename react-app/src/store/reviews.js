@@ -91,6 +91,7 @@ export const editReviewThunk = (id, data) => async (dispatch) => {
 		dispatch(loadReviews(newData));
 	} else {
 		const error = await res.json();
+	
 		return error;
 	}
 

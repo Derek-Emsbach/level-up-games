@@ -41,6 +41,7 @@ const CreateGame = () => {
 		if (data) {
 			setErrors([...Object.values(data.errors)]);
 		} else {
+			alert("Game created succesfully!")
 			history.push(`/`);
 		}
 	};

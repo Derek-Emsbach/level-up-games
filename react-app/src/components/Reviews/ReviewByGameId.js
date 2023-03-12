@@ -22,7 +22,7 @@ const ReviewByGameId = ({ game }) => {
 	);
 	const reviewer = specificReview.userId
 
-	console.log(user.username)
+
 
 	useEffect(() => {
 		dispatch(getAllReviewsThunk());
@@ -40,6 +40,12 @@ const ReviewByGameId = ({ game }) => {
 			dispatch(deleteReviewThunk({reviewToDelete, user_id: userId.id}));
 		}
 	};
+
+
+
+
+
+
 	return specificReview.map((review) => {
 		return (
 			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full text-slate-200">

@@ -17,9 +17,12 @@ const EditReviewForm = () => {
 	const [rating, setRating] = useState(review.rating);
 	const [errors, setErrors] = useState([]);
 
+	console.log(review)
+
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setErrors([]);
+		// setErrors([]);
 		const payload = {
 			userId,
 			review_text: reviewText,
@@ -27,7 +30,8 @@ const EditReviewForm = () => {
 		};
 
 		let data = await dispatch(editReviewThunk(reviewId, payload));
-		if (data.errors) {
+		console.log(data)
+		if (data) {
 			setErrors([...Object.values(data.errors)]);
 		} else {
 			history.push(`/games/${review.gameId}`);
@@ -49,14 +53,20 @@ const EditReviewForm = () => {
 				{!!errors.length && (
 					<ul className="border rounded-3xl p-2 bg-slate-900">
 						{errors.map((error, idx) => (
-							<li className="flex justify-center text-red-600" key={idx}>
+							<li
+								className="flex justify-center text-red-600"
+								key={idx}
+							>
 								{error}
 							</li>
 						))}
 					</ul>
 				)}
 				<div className="flex flex-row justify-center">
-					<form className="flex flex-col justify-start" onSubmit={handleSubmit}>
+					<form
+						className="flex flex-col justify-start"
+						onSubmit={handleSubmit}
+					>
 						<label className="text-slate-50 text-lg">Review</label>
 						<input
 							className="p-2 w-80 bg-slate-600"
@@ -74,14 +84,16 @@ const EditReviewForm = () => {
 							onChange={(e) => setRating(e.target.value)}
 						></input>
 
-						<button className="mt-10 text-slate-50 rounded-tl-lg rounded-tr-lg bg-sky-700 hover:bg-sky-900 p-1">Edit Review!</button>
+						<button className="mt-10 text-slate-50 rounded-tl-lg rounded-tr-lg bg-sky-700 hover:bg-sky-900 p-1">
+							Edit Review!
+						</button>
 						<button
-								className="mb-10 text-slate-50 rounded-bl-lg rounded-br-lg bg-gray-500 hover:bg-gray-700 p-1 pb-2"
-								type="button"
-								onClick={handleCancelClick}
-							>
-								Cancel
-							</button>
+							className="mb-10 text-slate-50 rounded-bl-lg rounded-br-lg bg-gray-500 hover:bg-gray-700 p-1 pb-2"
+							type="button"
+							onClick={handleCancelClick}
+						>
+							Cancel
+						</button>
 					</form>
 				</div>
 			</div>
