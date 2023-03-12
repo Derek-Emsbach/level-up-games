@@ -48,12 +48,12 @@ const ReviewByGameId = ({ game }) => {
 
 	return specificReview.map((review) => {
 		return (
-			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full text-slate-200">
+			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full h-fit text-slate-200 shadow-md shadow-sky-300">
 				<br></br>
-				<div className="text-lg">{user.username}</div>
+				<div className="text-xl p-5">{user.username}</div>
 				<br></br>
 				{/* <div>{review.createdAt.slice(0, 10)}</div> */}
-				<h1 className="text-4xl p-10">{review.rating}/10</h1>
+				<h1 className="text-6xl p-10 justify-center">{review.rating}/10</h1>
 				<div className="text-xl p-4">{review.reviewText} </div>
 				<div>
 					{/* <FontAwesomeIcon className="star" icon={faStar} /> */}
