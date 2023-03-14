@@ -5,6 +5,7 @@ import ReviewByGameId from "../Reviews/ReviewByGameId";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./AllGames.css";
+import AverageReview from "../Reviews/AvgReviewPerGame";
 
 const SingleGame = ({
 	game: { id, userId, title, previewImage, genre, developer, platform },
@@ -39,11 +40,14 @@ const SingleGame = ({
 					></img>
 				</Link>
 			</div>
+			<div>
+				<AverageReview game= {{id, userId, title, previewImage, genre, developer, platform}} />
+			</div>
 			<div className="flex justify-center p-1">{developer}</div>
 			<div className="flex justify-center p-1">{genre}</div>
 				{user && user.id === userId ? (
 					<>
-						<span>This is your post.</span>
+						<span className="text-slate-500 text-xs pb-1 pt-2">This is your post.</span>
 					<div className="flex justify-self-end">
 						<button
 							className="rounded-tl-lg rounded-bl-lg h-6 w-20 text-white bg-violet-700 hover:bg-violet-500 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300 "

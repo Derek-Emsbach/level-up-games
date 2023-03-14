@@ -7,6 +7,7 @@ import {
 	deleteGameThunk,
 } from "../../store/games";
 import { getAllReviewsThunk, getSingleReview } from "../../store/reviews";
+import AverageReview from "../Reviews/AvgReviewPerGame";
 import ReviewForm from "../Reviews/CreateReview";
 import ReviewByGameId from "../Reviews/ReviewByGameId";
 // import { getAllReviewsThunk } from "../../store/reviews";
@@ -79,6 +80,7 @@ const GameDetail = () => {
 							{game.platform}
 						</strong>
 					</div>
+					<AverageReview game={game} />
 					<div className="flex flex-col w- pb-20 pt-20 place-items-center">
 						<img
 							className="h-80 w-max pr-10 mb-6"
