@@ -20,10 +20,10 @@ const AverageReview = ({ game }) => {
 	const specificReview = allReviews.filter(
 		(review) => game.id === review.gameId
 	);
-	console.log(specificReview);
+	
 
 	const ratings = specificReview.map((review) => review.rating);
-	console.log(ratings);
+
 
 	const sumRating = (a, b) => a + b;
 
@@ -36,7 +36,7 @@ const AverageReview = ({ game }) => {
 
 	const theAvg = avgRating / ratings.length;
 
-	console.log(avgRating / ratings.length);
+
 
 	useEffect(() => {
 		dispatch(getAllReviewsThunk());
