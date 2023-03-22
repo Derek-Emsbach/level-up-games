@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,6 +38,11 @@ function Navigation({ isLoaded }) {
 							</div>
 						</li>
 					</div>
+					<li>
+						<div className="text-sky-400 font-semibold hover:text-white py-2 px-2">
+							<a href="https://github.com/Derek-Emsbach">About the Creator</a>
+						</div>
+					</li>
 					<div>
 						<li className="rounded-full mt-2 bg-transparent hover:bg-indigo-600 text-sky-400 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
 							<NavLink exact to="/gameform">
