@@ -50,6 +50,7 @@ export const getAllReviewsByGameId = (gameId) => async (dispatch) => {
 
     if (response.ok) {
       const review = await response.json();
+	  console.log(review)
       dispatch(loadReviews(review));
       return review
     }
@@ -99,7 +100,7 @@ export const editReviewThunk = (id, data) => async (dispatch) => {
 
 export const deleteReviewThunk = (data) => async (dispatch) => {
 	const body = JSON.stringify(data);
-	
+
 
 
 	const res = await fetch(`/api/reviews/${data.reviewToDelete}`, {
