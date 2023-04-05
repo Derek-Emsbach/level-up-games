@@ -3,9 +3,11 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import {
 	getAllReviewsThunk,
+	getAllReviewsByGameId,
 	deleteReviewThunk,
 	editReviewThunk,
 } from "../../store/reviews";
+import { getOneUserThunk } from "../../store/users";
 
 const ReviewByGameId = ({ game }) => {
 	const history = useHistory();
@@ -26,6 +28,7 @@ const ReviewByGameId = ({ game }) => {
 
 	useEffect(() => {
 		dispatch(getAllReviewsThunk());
+		dispatch(getAllReviewsByGameId(game.id))
 	}, [dispatch]);
 
 
