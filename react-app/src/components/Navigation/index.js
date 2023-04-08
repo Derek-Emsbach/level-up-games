@@ -18,8 +18,8 @@ function Navigation({ isLoaded }) {
 							<NavLink exact to="/">
 								{/* Home */}
 								<FontAwesomeIcon
-									style={{ color: "04d9ff" }}
-									className="fa-5x animate-pulse "
+									style={{ color: "04d9ff"}}
+									className="fa-5x animate-pulse"
 									icon={faArrowTurnUp}
 								/>
 								{/* <img
@@ -60,7 +60,7 @@ function Navigation({ isLoaded }) {
 					</div>
 					<div>
 						{isLoaded && (
-							<li className="hover:animate-pulse p-2 mt-2 mr-20 m-25 rounded-full ring-2 ring-gray-300 dark:ring-sky-500">
+							<li className="p-2 mt-2 mr-20 m-25 rounded-full ring-2 ring-gray-300 dark:ring-sky-500">
 								<ProfileButton user={sessionUser} />
 							</li>
 						)}
