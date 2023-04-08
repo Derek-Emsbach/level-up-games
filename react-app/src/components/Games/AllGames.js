@@ -14,23 +14,25 @@ const AllGames = () => {
 	}, [dispatch]);
 
 	return (
-		<div>
+		<div className="bg-gradient-to-r from-slate-800 via-sky-700 to-slate-800">
 
 			{/* <p>Whether it just came out or you played it on NES for the first time...</p>
 			<p>Share your story and hear from other gamers like you!</p> */}
-			<div className="grid grid-cols-4 md:columns-none overflow-visible sm-grid-cols-none">
-				<div className="h-100 bg-gradient-to-r from-slate-900 to-violet-700 row-span-1 overflow-visible">
+			<div>
+			{/* <div className="grid grid-cols-4 md:columns-none overflow-visible sm-grid-cols-none"> */}
+				{/* <div className="h-100 bg-gradient-to-r from-slate-900 to-violet-700 row-span-1 overflow-visible">
 
-				</div>
-				<div className="col-start-2 col-span-2 h-100 bg-gradient-to-r from-violet-700 to-cyan-800 row-span-1 overflow-visible">
+				</div> */}
+				<div className="flex flex-col items-center justify-center content-center">
+				{/* <div className="col-start-2 col-span-2 h-100 bg-gradient-to-r from-violet-700 to-cyan-800 row-span-1 overflow-visible"> */}
 
 					{games.map((game) => (
 						<SingleGame key={game.id} game={game} />
 					))}
 				</div>
-				<div className="h-100 bg-gradient-to-r from-cyan-800 to-slate-900 row-span-1 overflow-visible">
+				{/* <div className="h-100 bg-gradient-to-r from-cyan-800 to-slate-900 row-span-1 overflow-visible">
 
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

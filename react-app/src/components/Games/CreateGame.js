@@ -53,7 +53,7 @@ const CreateGame = () => {
 	};
 
 	return (
-		<div className="flex justify-center h-screen bg-gradient-to-r from-slate-900 to-violet-700 pt-20 pb-20 mb-20">
+		<div className="flex flex-col items-center bg-gradient-to-r from-slate-800 via-sky-700 to-slate-800 h-screen bg-gradient-to-r pt-20 pb-20 mb-20">
 			<div className="flex flex-col justify-self-center border bg-black rounded-md w-1/3 h-fit p-5">
 				<h3 className="flex justify-center text-slate-50 text-2xl pb-6">
 					Add a game you've played!
