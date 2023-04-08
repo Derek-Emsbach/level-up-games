@@ -58,9 +58,8 @@ const GameDetail = () => {
 	)
 	console.log(isIsReview.length)
 	return (
-		<div className="grid grid-cols-4 h-fill">
-			<div className="h-100 bg-gradient-to-r from-slate-900 to-violet-700 row-span-1"></div>
-			<div className="flex flex-col col-start-2 col-span-2 h-100 bg-gradient-to-r from-violet-700 to-cyan-800 row-span-1">
+		<div className="flex flex-col items-center justify-center content-center bg-gradient-to-r from-slate-800 via-sky-700 to-slate-800">
+			<div className="flex flex-col items-center justify-center content-center w-3/5 h-100">
 				<div className="flex place-items-center self-center justify-center content-center items-center text-white">
 					<div className="flex self-center justify-center content-center items-center col-start-2 col-span-2 text-8xl text-slate-300 rounded-lg bg-slate-900 mt-8 p-10 border-double border-8 border-white shadow-2xl shadow-sky-300">
 						{game.title}
@@ -129,7 +128,6 @@ const GameDetail = () => {
 					</div>
 				</div>
 			</div>
-			<div className="h-100 bg-gradient-to-r from-cyan-800 to-slate-900 row-span-1"></div>
 		</div>
 	);
 };

@@ -15,6 +15,7 @@ import CreateReview from "./components/Reviews/CreateReview";
 import EditGameForm from "./components/Games/EditGameForm";
 import EditReviewForm from "./components/Reviews/EditReviewForm";
 import HomePage from "./components/HomePage/HomePage";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -49,6 +50,9 @@ function App() {
 					<Route path="/signup">
 						<SignupFormPage />
 					</Route>
+					<ProtectedRoute path="/profile">
+						<ProfilePage />
+					</ProtectedRoute>
 					<ProtectedRoute path="/gameform" exact={true}>
 						<CreateGame />
 					</ProtectedRoute>
