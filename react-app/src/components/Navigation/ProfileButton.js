@@ -7,6 +7,7 @@ import SignupFormModal from "../SignupFormModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 function ProfileButton({ user }) {
 	const dispatch = useDispatch();
@@ -52,7 +53,9 @@ function ProfileButton({ user }) {
 			<ul className={ulClassName} ref={ulRef}>
 				{user ? (
 					<>
+					<Link key={user.id} to={`/profile`}>
 						<li className="text-sky-400 pr-10">{user.username}</li>
+					</Link>
 						<li className="text-sky-400 pr-10">{user.email}</li>
 						<li>
 							<button

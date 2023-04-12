@@ -20,7 +20,7 @@ const AverageReview = ({ game }) => {
 	const specificReview = allReviews.filter(
 		(review) => game.id === review.gameId
 	);
-	
+
 
 	const ratings = specificReview.map((review) => review.rating);
 
@@ -28,7 +28,7 @@ const AverageReview = ({ game }) => {
 	const sumRating = (a, b) => a + b;
 
 	const theSum = ratings.forEach(async (rating) => {
-		console.log(rating);
+		// console.log(rating);
 		avgRating += rating;
 	});
 

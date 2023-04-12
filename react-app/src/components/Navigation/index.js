@@ -18,8 +18,8 @@ function Navigation({ isLoaded }) {
 							<NavLink exact to="/">
 								{/* Home */}
 								<FontAwesomeIcon
-									style={{ color: "04d9ff" }}
-									className="fa-5x animate-pulse "
+									style={{ color: "04d9ff"}}
+									className="fa-5x animate-pulse"
 									icon={faArrowTurnUp}
 								/>
 								{/* <img
@@ -44,23 +44,23 @@ function Navigation({ isLoaded }) {
 						</div>
 					</li>
 					<div>
-						<li className="rounded-full mt-2 bg-transparent hover:bg-indigo-600 hover:animate-pulse hover:text-white text-sky-400 font-semibold py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+						<li className="rounded-full mt-2 bg-transparent hover:bg-indigo-600 hover:animate-pulse hover:text-white text-sky-400 font-semibold py-2 px-4 hover:border-transparent rounded">
 							<NavLink exact to="/gameform">
 								<div className="flex flex-row self-center">
 									<div className="pr-5">
 										<FontAwesomeIcon
-											className="pr-15 fa-2x"
+											className=" fa-2x"
 											icon={faGamepad}
 										/>
 									</div>
-									<div>Add a Game you've played!</div>
+									<div>Add a Game!</div>
 								</div>
 							</NavLink>
 						</li>
 					</div>
 					<div>
 						{isLoaded && (
-							<li className="hover:animate-pulse p-2 mt-2 mr-20 m-25 rounded-full ring-2 ring-gray-300 dark:ring-sky-500">
+							<li className="p-2 mt-2 mr-20 m-25 rounded-full ring-2 ring-gray-300 dark:ring-sky-500">
 								<ProfileButton user={sessionUser} />
 							</li>
 						)}

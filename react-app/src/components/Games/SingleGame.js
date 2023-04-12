@@ -24,10 +24,11 @@ const SingleGame = ({
 	};
 
 	return (
-
-		<div className="flex flex-col items-center justify-center content-center bg-slate-800 text-slate-200 rounded-3xl items-center w-3/5 h-70 p-8 pt-6 pb-8 mt-6 mb-6 hover:border-4 border-sky-400 hover:shadow-2xl hover:shadow-sky-300 opacity-85 hover:opacity-100">
+		<div className="flex flex-col items-center justify-center content-center bg-slate-800 text-slate-200 rounded-3xl items-center w-3/5 h-70 p-8 pt-6 pb-8 mt-6 mb-6 hover:border-4 border-violet-500 hover:shadow-2xl hover:shadow-violet-400 opacity-85 hover:opacity-100">
 			<div className="flex flex-col justify-center">
+			<Link key={id} to={`/games/${id}`}>
 				<h3 className=" h-10 w-30 p-1 text-3xl">{title}</h3>
+				</Link>
 				<div className="flex justify-center p-1 text-xs">{platform}</div>
 			</div>
 			{/* <ReviewByGameId id={id}/> */}

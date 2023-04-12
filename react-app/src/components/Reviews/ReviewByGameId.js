@@ -13,7 +13,7 @@ const ReviewByGameId = ({ game }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const reviews = useSelector((state) => state.review);
-	const user = useSelector((store) => store.session.user);
+	const user = useSelector((store) => store.user);
 	const sessionUser = useSelector((state) => state.session.user);
 	const userId = sessionUser
 
@@ -29,6 +29,7 @@ const ReviewByGameId = ({ game }) => {
 	useEffect(() => {
 		dispatch(getAllReviewsThunk());
 		dispatch(getAllReviewsByGameId(game.id))
+		dispatch(getOneUserThunk(reviews.userId));
 	}, [dispatch]);
 
 
