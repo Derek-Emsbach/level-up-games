@@ -44,16 +44,16 @@ function Navigation({ isLoaded }) {
 						</div>
 					</li>
 					<div>
-						<li className="rounded-full mt-2 bg-transparent hover:bg-indigo-600 hover:animate-pulse hover:text-white text-sky-400 font-semibold py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+						<li className="rounded-full mt-2 bg-transparent hover:bg-indigo-600 hover:animate-pulse hover:text-white text-sky-400 font-semibold py-2 px-4 hover:border-transparent rounded">
 							<NavLink exact to="/gameform">
 								<div className="flex flex-row self-center">
 									<div className="pr-5">
 										<FontAwesomeIcon
-											className="pr-15 fa-2x"
+											className=" fa-2x"
 											icon={faGamepad}
 										/>
 									</div>
-									<div>Add a Game you've played!</div>
+									<div>Add a Game!</div>
 								</div>
 							</NavLink>
 						</li>

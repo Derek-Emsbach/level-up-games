@@ -53,7 +53,7 @@ function ProfileButton({ user }) {
 			<ul className={ulClassName} ref={ulRef}>
 				{user ? (
 					<>
-					<Link key={user.id} to={`/profile/${user.id}`}>
+					<Link key={user.id} to={`/profile`}>
 						<li className="text-sky-400 pr-10">{user.username}</li>
 					</Link>
 						<li className="text-sky-400 pr-10">{user.email}</li>
