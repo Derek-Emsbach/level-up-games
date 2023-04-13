@@ -39,6 +39,15 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
+    op.create_table('preview_images',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('url', sa.String(length=1000), nullable=False),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE preview_images SET SCHEMA {SCHEMA};")
+
+
     op.create_table('games',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -54,14 +63,6 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
-
-    op.create_table('preview_images',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('url', sa.String(length=1000), nullable=False),
-    sa.PrimaryKeyConstraint('id')
-    )
-    if environment == "production":
-        op.execute(f"ALTER TABLE preview_images SET SCHEMA {SCHEMA};")
 
     op.create_table('game_preview_images',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -114,6 +115,8 @@ def downgrade():
     op.drop_table('reviews')
     # op.drop_table('game_lists')
     op.drop_table('lists')
+    op.drop_table('preview_images')
+    op.drop_table('game_preview_images')
     op.drop_table('games')
     op.drop_table('users')
     # ### end Alembic commands ###
