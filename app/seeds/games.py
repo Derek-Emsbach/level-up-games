@@ -1,6 +1,10 @@
-from app.models import db, Game, environment, SCHEMA
+from app.models import db, Game, PreviewImage, environment, SCHEMA
 from datetime import date
 
+# Create some preview images
+image1 = PreviewImage(url="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675")
+image2 = PreviewImage(url="https://2.bp.blogspot.com/-EIdg35epSKg/XEQE2DgcvlI/AAAAAAABShM/-l9ZHOynOgIhbufE4tI4UQs1V7XR0M_jwCLcBGAs/s1600/Metroid_Prime_%2528GameCube%2529_04.jpg")
+image3 = PreviewImage(url="https://retrogameman.files.wordpress.com/2017/05/metroid-prime-screen-shot-2017-02-16-9-54-pm-4.jpg")
 
 # Adds a demo games
 metroid_prime = Game(
@@ -12,6 +16,7 @@ metroid_prime = Game(
     developer="Nintendo",
     genre="Action",
     platform="GameCube",
+    preview_images=[image1, image2, image3],
 )
 elden_ring = Game(
     user_id=1,
@@ -22,6 +27,7 @@ elden_ring = Game(
     developer="FromSoftware",
     genre="Adventure",
     platform="PC",
+    preview_images=[]
 )
 hogwarts_legacy = Game(
     user_id=1,
@@ -32,6 +38,7 @@ hogwarts_legacy = Game(
     developer="Avalanche Software",
     genre="Action role-playing",
     platform="PlayStation 5",
+    preview_images=[]
 )
 red_dead_redemption_2 = Game(
     user_id=2,
@@ -42,6 +49,7 @@ red_dead_redemption_2 = Game(
     developer="Rockstar Studios",
     genre="Action-adventure",
     platform="PlayStation 4",
+    preview_images=[]
 )
 zelda_ocarina_of_time = Game(
     user_id=2,
@@ -52,6 +60,7 @@ zelda_ocarina_of_time = Game(
     developer="Nintendo",
     genre="Action-adventure",
     platform="Nintendo 64",
+    preview_images=[]
 )
 metal_gear_solid = Game(
     user_id=2,
@@ -62,6 +71,7 @@ metal_gear_solid = Game(
     developer="	Konami Computer Entertainment Japan",
     genre="	Action-adventure, stealth",
     platform="PlayStation 1",
+    preview_images=[]
 )
 witcher_3 = Game(
     user_id=3,
@@ -72,6 +82,7 @@ witcher_3 = Game(
     developer="CD Projekt Red",
     genre="Action role-playing",
     platform="Xbox One",
+    preview_images=[]
 )
 spider_man = Game(
     user_id=3,
@@ -82,6 +93,7 @@ spider_man = Game(
     developer="Insomniac Games",
     genre="Action-adventure",
     platform="PlayStation 5",
+    preview_images=[]
 )
 skyrim = Game(
     user_id=3,
@@ -92,6 +104,7 @@ skyrim = Game(
     developer="	Bethesda Game Studios",
     genre="Action role-playing",
     platform="PlayStation 3",
+    preview_images=[]
 )
 
 
