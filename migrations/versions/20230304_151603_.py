@@ -48,11 +48,31 @@ def upgrade():
     sa.Column('developer', sa.String(length=255), nullable=False),
     sa.Column('genre', sa.String(length=255), nullable=False),
     sa.Column('platform', sa.String(length=255), nullable=False),
+    sa.Column('preview_images', sa.JSON(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
         op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
+
+    op.create_table('preview_images',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('url', sa.String(length=1000), nullable=False),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE preview_images SET SCHEMA {SCHEMA};")
+
+    op.create_table('game_preview_images',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('game_id', sa.Integer(), nullable=False),
+    sa.Column('preview_image_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['game_id'], ['games.id'], ),
+    sa.ForeignKeyConstraint(['preview_image_id'], ['preview_images.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE game_preview_images SET SCHEMA {SCHEMA};")
 
     # op.create_table('lists',
     # sa.Column('id', sa.Integer(), nullable=False),
