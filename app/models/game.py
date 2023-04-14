@@ -69,7 +69,7 @@ class Game(db.Model):
     developer = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(255), nullable=False)
     platform = db.Column(db.String(255), nullable=False)
-    preview_images = db.Column(db.String(1000), nullable=True)
+    detail_image = db.Column(db.String(1000), nullable=True)
 
 
 
@@ -80,14 +80,14 @@ class Game(db.Model):
     # preview_images = db.relationship("PreviewImage", secondary=game_preview_images, back_populates="games")
 
 
-    def set_preview_images(self, urls):
-        self.preview_images = ",".join(urls)
+    # def set_preview_images(self, urls):
+    #     self.preview_images = ",".join(urls)
 
-    def get_preview_images(self):
-        if self.preview_images:
-            return self.preview_images.split(",")
-        else:
-            return []
+    # def get_preview_images(self):
+    #     if self.preview_images:
+    #         return self.preview_images.split(",")
+    #     else:
+    #         return []
 
     def __repr__(self):
         return f"<Game id: {self.id}, user_id: {self.user_id}, title: {self.title}, preview_image: {self.preview_image}, description: {self.description}, developer: {self.developer}, genre: {self.genre}, platform: {self.platform}>"
@@ -103,7 +103,7 @@ class Game(db.Model):
             'genre': self.genre,
             'platform': self.platform,
             # 'previewImages': [image.url for image in self.preview_images]
-            'previewImages': self.preview_images,
+            'detailImage': self.detail_image,
         }
 
 # class PreviewImage(db.Model):

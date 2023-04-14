@@ -48,7 +48,7 @@ def upgrade():
     sa.Column('developer', sa.String(length=255), nullable=False),
     sa.Column('genre', sa.String(length=255), nullable=False),
     sa.Column('platform', sa.String(length=255), nullable=False),
-    sa.Column('preview_images', sa.JSON(), nullable=True),
+    sa.Column('detail_image', sa.String(length=1000), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
