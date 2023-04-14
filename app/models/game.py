@@ -45,6 +45,13 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .preview_image import PreviewImage
 
+# Define a join table for the many-to-many relationship
+game_preview_images = db.Table('game_preview_images',
+    db.Column('game_id', db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
+    db.Column('preview_image_id', db.Integer, db.ForeignKey(add_prefix_for_prod('preview_images.id')), primary_key=True),
+    extend_existing=True
+)
+
 class Game(db.Model):
     __tablename__ = 'games'
 
@@ -61,12 +68,6 @@ class Game(db.Model):
     genre = db.Column(db.String(255), nullable=False)
     platform = db.Column(db.String(255), nullable=False)
 
-    # Define a join table for the many-to-many relationship
-    game_preview_images = db.Table('game_preview_images',
-        db.Column('game_id', db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
-        db.Column('preview_image_id', db.Integer, db.ForeignKey(add_prefix_for_prod('preview_images.id')), primary_key=True),
-        extend_existing=True
-    )
 
     # Related Data
     user = db.relationship("User", back_populates='games')
