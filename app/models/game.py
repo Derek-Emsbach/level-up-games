@@ -43,6 +43,8 @@
 # \/\/ TEST MODEL FOR ADDDING PREVIEW IMAGES ARRAY \/\/
 
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy import Column, ForeignKey, Integer, String, JSON
+from sqlalchemy.orm import relationship
 # from .preview_image import PreviewImage
 
 # Define a join table for the many-to-many relationship
@@ -67,13 +69,23 @@ class Game(db.Model):
     developer = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(255), nullable=False)
     platform = db.Column(db.String(255), nullable=False)
-    preview_images = db.Column(db.JSON, nullable=True)
+    preview_images = db.Column(db.String(1000), nullable=True)
+
 
     # Related Data
     user = db.relationship("User", back_populates='games')
     reviews = db.relationship(
         "Review", back_populates='games', cascade='all, delete')
     # preview_images = db.relationship("PreviewImage", secondary=game_preview_images, back_populates="games")
+
+    # def set_preview_images(self, urls):
+    #     self.preview_images = ",".join(urls)
+
+    # def get_preview_images(self):
+    #     if self.preview_images:
+    #         return self.preview_images.split(",")
+    #     else:
+    #         return []
 
     def __repr__(self):
         return f"<Game id: {self.id}, user_id: {self.user_id}, title: {self.title}, preview_image: {self.preview_image}, description: {self.description}, developer: {self.developer}, genre: {self.genre}, platform: {self.platform}>"
@@ -88,7 +100,8 @@ class Game(db.Model):
             'developer': self.developer,
             'genre': self.genre,
             'platform': self.platform,
-            'previewImages': [image.url for image in self.preview_images]
+            # 'previewImages': [image.url for image in self.preview_images]
+            'previewImages': self.preview_images,
         }
 
 # class PreviewImage(db.Model):

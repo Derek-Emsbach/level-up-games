@@ -58,14 +58,14 @@ const GamePreview = ({ previewImage, previewImages, description }) => {
   //   return () => clearInterval(intervalId);
   // }, [previewImages.length]);
 
-  useEffect(() => {
-        const intervalId = setInterval(() => {
-          setCurrentIndex((prevIndex) =>
-            prevIndex === previewImages.length - 1 ? 0 : prevIndex + 1
-          );
-        }, 3000);
-        return () => clearInterval(intervalId);
-      }, [previewImages.length]);
+  // useEffect(() => {
+  //       const intervalId = setInterval(() => {
+  //         setCurrentIndex((prevIndex) =>
+  //           prevIndex === previewImages.length - 1 ? 0 : prevIndex + 1
+  //         );
+  //       }, 3000);
+  //       return () => clearInterval(intervalId);
+  //     }, [previewImages.length]);
 
 
   const handleMouseEnter = () => {
@@ -79,7 +79,7 @@ const GamePreview = ({ previewImage, previewImages, description }) => {
   return (
     <div className="flex items-center" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="flex-1 flex flex-row absolute inset-y-50 left-20 w-1/3 min-w-full md:min-w-0 ">
-        {previewImages.map((image, index) => (
+        {/* {previewImages.map((image, index) => (
           <img
             key={index}
             src={image}
@@ -89,7 +89,14 @@ const GamePreview = ({ previewImage, previewImages, description }) => {
             }}
             className="relative rounded-lg border-4 border-slate-400 shadow-2xl shadow-slate-300 "
           />
-        ))}
+        ))} */}
+          <img
+
+            src={previewImages}
+            alt="game preview"
+
+            className="relative rounded-lg border-4 border-slate-400 shadow-2xl shadow-slate-300 "
+          />
       </div>
       <img className="h-80 rounded-lg border-2 border-slate-600 hover:border-2 hover:border-slate-400 hover:shadow-xl hover:shadow-slate-300" alt={`Cover art`} src={previewImage}></img>
       <div className="flex-1 p-10 absolute inset-y-50 right-20 w-1/3 min-w-full md:min-w-0 bg-slate-900 text-xl overscroll-auto border-4 border-slate-400 shadow-2xl shadow-slate-300 rounded-lg">{description}</div>
