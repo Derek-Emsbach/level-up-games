@@ -24,10 +24,10 @@ const SingleGame = ({
 		genre,
 		developer,
 		platform,
-		previewImages,
+		detailImage,
 	},
 }) => {
-	console.log(previewImages);
+	
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
@@ -106,7 +106,7 @@ const SingleGame = ({
 								<GamePreview
 									key={id}
 									previewImage={previewImage}
-									previewImages={previewImages}
+									detailImage={detailImage}
 									description={description}
 								></GamePreview>
 							</Link>

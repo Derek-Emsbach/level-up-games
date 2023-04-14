@@ -18,7 +18,7 @@ metroid_prime = Game(
     developer="Nintendo",
     genre="Action",
     platform="GameCube",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 elden_ring = Game(
     user_id=1,
@@ -29,7 +29,7 @@ elden_ring = Game(
     developer="FromSoftware",
     genre="Adventure",
     platform="PC",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 hogwarts_legacy = Game(
     user_id=1,
@@ -40,7 +40,7 @@ hogwarts_legacy = Game(
     developer="Avalanche Software",
     genre="Action role-playing",
     platform="PlayStation 5",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 red_dead_redemption_2 = Game(
     user_id=2,
@@ -51,7 +51,7 @@ red_dead_redemption_2 = Game(
     developer="Rockstar Studios",
     genre="Action-adventure",
     platform="PlayStation 4",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 zelda_ocarina_of_time = Game(
     user_id=2,
@@ -62,7 +62,7 @@ zelda_ocarina_of_time = Game(
     developer="Nintendo",
     genre="Action-adventure",
     platform="Nintendo 64",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 metal_gear_solid = Game(
     user_id=2,
@@ -73,7 +73,7 @@ metal_gear_solid = Game(
     developer="	Konami Computer Entertainment Japan",
     genre="	Action-adventure, stealth",
     platform="PlayStation 1",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 witcher_3 = Game(
     user_id=3,
@@ -84,7 +84,7 @@ witcher_3 = Game(
     developer="CD Projekt Red",
     genre="Action role-playing",
     platform="Xbox One",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 spider_man = Game(
     user_id=3,
@@ -95,7 +95,7 @@ spider_man = Game(
     developer="Insomniac Games",
     genre="Action-adventure",
     platform="PlayStation 5",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 skyrim = Game(
     user_id=3,
@@ -106,7 +106,7 @@ skyrim = Game(
     developer="	Bethesda Game Studios",
     genre="Action role-playing",
     platform="PlayStation 3",
-    preview_images="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
 )
 
 
