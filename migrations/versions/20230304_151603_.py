@@ -47,6 +47,16 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE preview_images SET SCHEMA {SCHEMA};")
 
+    op.create_table('game_preview_images',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('game_id', sa.Integer(), nullable=False),
+    sa.Column('preview_image_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['game_id'], ['games.id'], ),
+    sa.ForeignKeyConstraint(['preview_image_id'], ['preview_images.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE game_preview_images SET SCHEMA {SCHEMA};")
 
     op.create_table('games',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -64,16 +74,6 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
 
-    op.create_table('game_preview_images',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('game_id', sa.Integer(), nullable=False),
-    sa.Column('preview_image_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['game_id'], ['games.id'], ),
-    sa.ForeignKeyConstraint(['preview_image_id'], ['preview_images.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    if environment == "production":
-        op.execute(f"ALTER TABLE game_preview_images SET SCHEMA {SCHEMA};")
 
     # op.create_table('lists',
     # sa.Column('id', sa.Integer(), nullable=False),
