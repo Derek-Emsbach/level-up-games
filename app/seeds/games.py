@@ -1,4 +1,4 @@
-from app.models import db, Game, PreviewImage, environment, SCHEMA
+from app.models import db, Game, environment, SCHEMA
 from datetime import date
 
 # Create some preview images
@@ -16,7 +16,7 @@ metroid_prime = Game(
     developer="Nintendo",
     genre="Action",
     platform="GameCube",
-    preview_images=[],
+    preview_images=["https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675", "https://2.bp.blogspot.com/-EIdg35epSKg/XEQE2DgcvlI/AAAAAAABShM/-l9ZHOynOgIhbufE4tI4UQs1V7XR0M_jwCLcBGAs/s1600/Metroid_Prime_%2528GameCube%2529_04.jpg", "https://retrogameman.files.wordpress.com/2017/05/metroid-prime-screen-shot-2017-02-16-9-54-pm-4.jpg"],
 )
 elden_ring = Game(
     user_id=1,

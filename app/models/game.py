@@ -43,14 +43,14 @@
 # \/\/ TEST MODEL FOR ADDDING PREVIEW IMAGES ARRAY \/\/
 
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from .preview_image import PreviewImage
+# from .preview_image import PreviewImage
 
 # Define a join table for the many-to-many relationship
-game_preview_images = db.Table('game_preview_images',
-    db.Column('game_id', db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
-    db.Column('preview_image_id', db.Integer, db.ForeignKey(add_prefix_for_prod('preview_images.id')), primary_key=True),
-    extend_existing=True
-)
+# game_preview_images = db.Table('game_preview_images',
+#     db.Column('game_id', db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
+#     db.Column('preview_image_id', db.Integer, db.ForeignKey(add_prefix_for_prod('preview_images.id')), primary_key=True),
+#     extend_existing=True
+# )
 
 class Game(db.Model):
     __tablename__ = 'games'
@@ -67,13 +67,13 @@ class Game(db.Model):
     developer = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(255), nullable=False)
     platform = db.Column(db.String(255), nullable=False)
-
+    preview_images = db.Column(db.JSON, nullable=True)
 
     # Related Data
     user = db.relationship("User", back_populates='games')
     reviews = db.relationship(
         "Review", back_populates='games', cascade='all, delete')
-    preview_images = db.relationship("PreviewImage", secondary=game_preview_images, back_populates="games")
+    # preview_images = db.relationship("PreviewImage", secondary=game_preview_images, back_populates="games")
 
     def __repr__(self):
         return f"<Game id: {self.id}, user_id: {self.user_id}, title: {self.title}, preview_image: {self.preview_image}, description: {self.description}, developer: {self.developer}, genre: {self.genre}, platform: {self.platform}>"
@@ -90,3 +90,15 @@ class Game(db.Model):
             'platform': self.platform,
             'previewImages': [image.url for image in self.preview_images]
         }
+
+# class PreviewImage(db.Model):
+#     __tablename__ = 'preview_images'
+
+#     if environment == "production":
+#         __table_args__ = {'schema': SCHEMA}
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     url = db.Column(db.String(1000), nullable=False)
+
+#     # Related Data
+#     games = db.relationship("Game", secondary=game_preview_images, back_populates="preview_images")
