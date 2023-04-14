@@ -2,7 +2,7 @@ from app.models import db, Game, environment, SCHEMA
 from datetime import date
 
 # Create some preview images
-# image1 = PreviewImage(url="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675")
+# image1 = PreviewImage(url="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg")
 # image2 = PreviewImage(url="https://2.bp.blogspot.com/-EIdg35epSKg/XEQE2DgcvlI/AAAAAAABShM/-l9ZHOynOgIhbufE4tI4UQs1V7XR0M_jwCLcBGAs/s1600/Metroid_Prime_%2528GameCube%2529_04.jpg")
 # image3 = PreviewImage(url="https://retrogameman.files.wordpress.com/2017/05/metroid-prime-screen-shot-2017-02-16-9-54-pm-4.jpg")
 
@@ -12,13 +12,13 @@ from datetime import date
 metroid_prime = Game(
     user_id=1,
     title='Metroid Prime',
-    preview_image="https://assets-prd.ignimgs.com/2021/12/07/metroidprime-1638900247577.png?width=300&crop=1%3A1%2Csmart",
+    preview_image="https://ewscripps.brightspotcdn.com/dims4/default/d426bb3/2147483647/strip/true/crop/2738x1540+0+0/resize/1280x720!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2Fa5%2F36%2F1e3e5e254bcda5f4d0567e91e1de%2Fmetroid-prime-remastered.jpg",
     description="Metroid Prime takes place between the original Metroid and Metroid II: Return of Samus. Like previous games in the series, Metroid Prime has a science fiction setting in which players control the bounty hunter Samus Aran as she battles the Space Pirates and their biological experiments on the planet Tallon IV.",
     # release_date=date(2002, 11, 18),
     developer="Nintendo",
     genre="Action",
-    platform="GameCube",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    platform="Switch",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 elden_ring = Game(
     user_id=1,
@@ -29,7 +29,7 @@ elden_ring = Game(
     developer="FromSoftware",
     genre="Adventure",
     platform="PC",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 hogwarts_legacy = Game(
     user_id=1,
@@ -40,7 +40,7 @@ hogwarts_legacy = Game(
     developer="Avalanche Software",
     genre="Action role-playing",
     platform="PlayStation 5",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 red_dead_redemption_2 = Game(
     user_id=2,
@@ -51,7 +51,7 @@ red_dead_redemption_2 = Game(
     developer="Rockstar Studios",
     genre="Action-adventure",
     platform="PlayStation 4",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 zelda_ocarina_of_time = Game(
     user_id=2,
@@ -62,7 +62,7 @@ zelda_ocarina_of_time = Game(
     developer="Nintendo",
     genre="Action-adventure",
     platform="Nintendo 64",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 metal_gear_solid = Game(
     user_id=2,
@@ -73,7 +73,7 @@ metal_gear_solid = Game(
     developer="	Konami Computer Entertainment Japan",
     genre="	Action-adventure, stealth",
     platform="PlayStation 1",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 witcher_3 = Game(
     user_id=3,
@@ -84,7 +84,7 @@ witcher_3 = Game(
     developer="CD Projekt Red",
     genre="Action role-playing",
     platform="Xbox One",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 spider_man = Game(
     user_id=3,
@@ -95,7 +95,7 @@ spider_man = Game(
     developer="Insomniac Games",
     genre="Action-adventure",
     platform="PlayStation 5",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 skyrim = Game(
     user_id=3,
@@ -106,7 +106,7 @@ skyrim = Game(
     developer="	Bethesda Game Studios",
     genre="Action role-playing",
     platform="PlayStation 3",
-    detail_image="https://bloximages.chicago2.vip.townnews.com/thebrunswicknews.com/content/tncms/assets/v3/editorial/2/82/2828a611-4534-5f0a-ae6a-1884eb8bc8ce/6408723007b9a.image.jpg?resize=1200%2C675",
+    detail_image="https://sm.pcmag.com/pcmag_me/review/m/metroid-pr/metroid-prime-remastered_df9f.jpg",
 )
 
 
