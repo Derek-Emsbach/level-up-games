@@ -13,7 +13,7 @@ const ReviewByGameId = ({ game }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const reviews = useSelector((state) => state.review);
-	const user = useSelector((store) => store.user);
+	const users = useSelector((state) => Object.values(state.user));
 	const sessionUser = useSelector((state) => state.session.user);
 	const userId = sessionUser
 
@@ -22,7 +22,14 @@ const ReviewByGameId = ({ game }) => {
 	const specificReview = allReviews.filter(
 		(review) => game.id === review.gameId
 	);
-	const reviewer = specificReview.userId
+	// const reviewer = specificReview.filter(
+	// 	(user) =>  === user.id
+	// )
+	console.log(users)
+	console.log(specificReview)
+	// console.log(reviewer)
+
+
 
 
 
@@ -54,7 +61,7 @@ const ReviewByGameId = ({ game }) => {
 		return (
 			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full h-fit text-slate-200 shadow-md shadow-sky-300">
 				<br></br>
-				<div className="text-xl p-5">{user.username}</div>
+				<div className="text-xl p-5">{userId.username}</div>
 				<br></br>
 				{/* <div>{review.createdAt.slice(0, 10)}</div> */}
 				<h1 className="text-6xl p-10 justify-center">{review.rating}/10</h1>
