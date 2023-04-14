@@ -78,7 +78,7 @@ const GamePreview = ({ previewImage, previewImages, description }) => {
 
   return (
     <div className="flex items-center" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <div className="flex-1 flex flex-row absolute inset-y-50 left-20 w-1/3 min-w-full md:min-w-0">
+      <div className="flex-1 flex flex-row absolute inset-y-50 left-20 w-1/3 min-w-full md:min-w-0 ">
         {previewImages.map((image, index) => (
           <img
             key={index}
@@ -87,12 +87,12 @@ const GamePreview = ({ previewImage, previewImages, description }) => {
             style={{
               display: currentIndex === index ? "block" : "none",
             }}
-            className="relative rounded-lg  "
+            className="relative rounded-lg border-4 border-slate-400 shadow-2xl shadow-slate-300 "
           />
         ))}
       </div>
-      <img className="h-80" alt={`Cover art`} src={previewImage}></img>
-      <div className="flex-1 p-10 absolute inset-y-50 right-20 w-1/3 min-w-full md:min-w-0 bg-slate-900 text-xl overscroll-auto">{description}</div>
+      <img className="h-80 rounded-lg border-2 border-slate-600 hover:border-2 hover:border-slate-400 hover:shadow-xl hover:shadow-slate-300" alt={`Cover art`} src={previewImage}></img>
+      <div className="flex-1 p-10 absolute inset-y-50 right-20 w-1/3 min-w-full md:min-w-0 bg-slate-900 text-xl overscroll-auto border-4 border-slate-400 shadow-2xl shadow-slate-300 rounded-lg">{description}</div>
     </div>
   );
 };
