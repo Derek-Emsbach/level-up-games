@@ -17,7 +17,7 @@ const EditGameForm = () => {
 	const [developer, setDeveloper] = useState(specificGame.developer);
 	const [genre, setGenre] = useState(specificGame.genre);
 	const [platform, setPlatform] = useState(specificGame.platform);
-	const [detailImage, setDetailImage] = useState("")
+	const [detailImage, setDetailImage] = useState(specificGame.detailImage)
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
