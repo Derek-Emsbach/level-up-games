@@ -38,7 +38,7 @@ const UserReviews = ({ user }) => {
 	};
 
 	return (
-		<div className="flex flex-col justify-center h-screen">
+		<div className="flex flex-col justify-center">
 			<h1 className="flex flex-col justify-center text-7xl font-extrabold text-slate-900">
 				My Reviews
 			</h1>
