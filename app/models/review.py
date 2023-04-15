@@ -12,7 +12,7 @@ class Review(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
     game_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('games.id')), nullable=False)
-    review_text = db.Column(db.String(1000), nullable=False)
+    review_text = db.Column(db.String(10000), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
 
     # Related Data
