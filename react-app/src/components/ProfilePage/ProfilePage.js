@@ -28,7 +28,7 @@ const ProfilePage = () => {
 
 	return (
 		<div className="h-100 flex justify-center bg-gradient-to-r from-slate-800 via-sky-700 to-slate-800">
-			<div>
+			<div className='h-screen'>
 				{user && (
 					<div className="grid grid-cols-2 justify-items-start">
 						<div className="justify-self-start flex flex-col p-20">
