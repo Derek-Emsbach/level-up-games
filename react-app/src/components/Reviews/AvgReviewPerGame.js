@@ -46,8 +46,8 @@ const AverageReview = ({ game }) => {
 		<>
 			{theAvg > 0 && (
 				<>
-					<h1 className="text-3xl pt-4 pb-4 flex place-content-center justify-center justify-items-center self-center">Rating</h1>
-					<h1 className="text-5xl flex place-content-center justify-center justify-items-center self-center pb-5">{theAvg}/10</h1>
+					<h1 className="text-3xl pt-4 pb-4 flex place-content-center justify-center justify-items-center self-center">Community Rating</h1>
+					<p className="text-5xl flex place-content-center justify-center justify-items-center self-center pb-5">{Math.round(theAvg)}/10</p>
 				</>
 			)}
 			{!theAvg && <h1 className="pt-3 pb-3 text-slate-400">No Reviews Yet</h1>}
