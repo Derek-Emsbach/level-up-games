@@ -28,7 +28,7 @@ const ProfilePage = () => {
 
 	return (
 		<div className="h-100 flex justify-center bg-gradient-to-r from-slate-800 via-sky-700 to-slate-800">
-			<div className='h-screen'>
+			<div className='h-100'>
 				{user && (
 					<div className="grid grid-cols-2 justify-items-start">
 						<div className="justify-self-start flex flex-col p-20">
@@ -41,8 +41,10 @@ const ProfilePage = () => {
 						<div className="flex flex-col justify-around">
                         {activeTab === 'games' && (
                             <>
+
                             <h1 className="flex justify-center text-7xl font-extrabold text-slate-900">My Games</h1>
 							<ul>
+
 								{games.map((game) => (
 									<li className="flex justify-center">
 										{/* <div>{game.title}</div> */}

@@ -15,7 +15,7 @@ const AllGames = () => {
 	}, [dispatch]);
 
 	return (
-		<div className="bg-gradient-to-r from-slate-800 via-sky-700 to-slate-800">
+		<div className="bg-gradient-to-r from-slate-800 via-sky-700 to-slate-800 h-100">
 			<div>
 				<div className="flex flex-col items-center justify-center content-center">
 					{games.map((game) => (
