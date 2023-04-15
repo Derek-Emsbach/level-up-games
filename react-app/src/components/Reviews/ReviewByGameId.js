@@ -8,6 +8,7 @@ import {
 	editReviewThunk,
 } from "../../store/reviews";
 import { getOneUserThunk } from "../../store/users";
+import ReviewByUserId from "./ReviewByUserId";
 
 const ReviewByGameId = ({ game }) => {
 	const history = useHistory();
@@ -15,8 +16,7 @@ const ReviewByGameId = ({ game }) => {
 	const reviews = useSelector((state) => state.review);
 	const users = useSelector((state) => Object.values(state.user));
 	const sessionUser = useSelector((state) => state.session.user);
-	const userId = sessionUser
-
+	const userId = sessionUser;
 
 	const allReviews = Object.values(reviews);
 	const specificReview = allReviews.filter(
@@ -25,46 +25,46 @@ const ReviewByGameId = ({ game }) => {
 	// const reviewer = specificReview.filter(
 	// 	(user) =>  === user.id
 	// )
-	console.log(users)
-	console.log(specificReview)
+	// console.log(users)
+	// console.log(specificReview)
 	// console.log(reviewer)
-
-
-
-
 
 	useEffect(() => {
 		dispatch(getAllReviewsThunk());
-		dispatch(getAllReviewsByGameId(game.id))
+		dispatch(getAllReviewsByGameId(game.id));
 		dispatch(getOneUserThunk(reviews.userId));
 	}, [dispatch]);
-
 
 	const handleEditClick = () => {
 		history.push(`/reviews/${specificReview[0].id}/update`);
 	};
 
 	const handleDeleteClick = () => {
-		const reviewById = specificReview.filter((userReview) => userReview.userId === sessionUser.id)
-		const reviewToDelete = reviewById[0].id
-		if(reviewById.length > 0){
-			dispatch(deleteReviewThunk({reviewToDelete, user_id: userId.id}));
+		const reviewById = specificReview.filter(
+			(userReview) => userReview.userId === sessionUser.id
+		);
+		const reviewToDelete = reviewById[0].id;
+		if (reviewById.length > 0) {
+			dispatch(deleteReviewThunk({ reviewToDelete, user_id: userId.id }));
 		}
 	};
-
-
-
-
-
 
 	return specificReview.map((review) => {
 		return (
 			<div className="flex flex-col justify-center justify-items-center self-center bg-slate-700  mt-8 rounded-lg w-full h-fit text-slate-200 shadow-md shadow-sky-300">
 				<br></br>
-				<div className="text-xl p-5">{userId.username}</div>
+				{/* <div className="text-xl p-5">{userId.username}</div> */}
+				<div className="text-xl p-5 text-white">
+					<ReviewByUserId
+						users={users}
+						review={review}
+					/>
+				</div>
 				<br></br>
 				{/* <div>{review.createdAt.slice(0, 10)}</div> */}
-				<h1 className="text-6xl p-10 justify-center">{review.rating}/10</h1>
+				<h1 className="text-6xl p-10 justify-center">
+					{review.rating}/10
+				</h1>
 				<div className="text-xl p-4">{review.reviewText} </div>
 				<div>
 					{/* <FontAwesomeIcon className="star" icon={faStar} /> */}
@@ -72,8 +72,18 @@ const ReviewByGameId = ({ game }) => {
 				<div className="deleteButton">
 					{review.userId === sessionUser?.id && (
 						<div className="p-6">
-							<button className="rounded-none bg-purple-700 w-20 hover:bg-purple-900 " onClick={handleEditClick}>Edit</button>
-							<button className="rounded-none bg-red-700 w-20 hover:bg-red-900" onClick={handleDeleteClick}>Delete</button>
+							<button
+								className="rounded-none bg-purple-700 w-20 hover:bg-purple-900 "
+								onClick={handleEditClick}
+							>
+								Edit
+							</button>
+							<button
+								className="rounded-none bg-red-700 w-20 hover:bg-red-900"
+								onClick={handleDeleteClick}
+							>
+								Delete
+							</button>
 						</div>
 					)}
 				</div>

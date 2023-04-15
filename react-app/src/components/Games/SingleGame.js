@@ -27,13 +27,13 @@ const SingleGame = ({
 		detailImage,
 	},
 }) => {
-	
+
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
 	const gameUser = useSelector((state) => state.user[userId]);
 	const [showDescription, setShowDescription] = useState(false);
-	console.log(gameUser)
+	
 
 	useEffect(() => {
 		// dispatch(getAllUsersThunk())
