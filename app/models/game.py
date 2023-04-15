@@ -90,7 +90,7 @@ class Game(db.Model):
     #         return []
 
     def __repr__(self):
-        return f"<Game id: {self.id}, user_id: {self.user_id}, title: {self.title}, preview_image: {self.preview_image}, description: {self.description}, developer: {self.developer}, genre: {self.genre}, platform: {self.platform}>"
+        return f"<Game id: {self.id}, user_id: {self.user_id}, title: {self.title}, preview_image: {self.preview_image}, description: {self.description}, developer: {self.developer}, genre: {self.genre}, platform: {self.platform}, detail_image: {self.detail_image}>"
 
     def to_dict(self):
         return {

@@ -17,6 +17,7 @@ const EditGameForm = () => {
 	const [developer, setDeveloper] = useState(specificGame.developer);
 	const [genre, setGenre] = useState(specificGame.genre);
 	const [platform, setPlatform] = useState(specificGame.platform);
+	const [detailImage, setDetailImage] = useState("")
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
@@ -36,6 +37,7 @@ const EditGameForm = () => {
 			developer,
 			genre,
 			platform,
+			detail_image: detailImage,
 		};
 
 		let data = await dispatch(editGameThunk(gameId, payload));
@@ -127,6 +129,16 @@ const EditGameForm = () => {
 							style={{ display: "block" }}
 							value={platform}
 							onChange={(e) => setPlatform(e.target.value)}
+						></input>
+						<label className="text-slate-50 text-lg">
+							Screenshot
+						</label>
+						<input
+							className="p-2 w-80 bg-slate-600"
+							placeholder="Optional. Add a screenshot!..."
+							style={{ display: "block" }}
+							value={detailImage}
+							onChange={(e) => setDetailImage(e.target.value)}
 						></input>
 						<div className="p-4 pt-8 flex flex-col justify-center text-lg">
 							<button

@@ -14,6 +14,7 @@ const CreateGame = () => {
 	const [developer, setDeveloper] = useState("");
 	const [genre, setGenre] = useState("");
 	const [platform, setPlatform] = useState("");
+	const [detailImage, setDetailImage] = useState("")
 	const [tooLong, setTooLong] = useState(false);
 	const [errors, setErrors] = useState([]);
 
@@ -35,6 +36,7 @@ const CreateGame = () => {
 			developer,
 			genre,
 			platform,
+			detail_image: detailImage,
 		};
 		let data = await dispatch(createGameThunk(payload));
 
@@ -142,6 +144,16 @@ const CreateGame = () => {
 							style={{ display: "block" }}
 							value={platform}
 							onChange={(e) => setPlatform(e.target.value)}
+						></input>
+						<label className="text-slate-50 text-lg">
+							Screenshot
+						</label>
+						<input
+							className="p-2 w-80 bg-slate-600"
+							placeholder="Optional. Add a screenshot!..."
+							style={{ display: "block" }}
+							value={detailImage}
+							onChange={(e) => setDetailImage(e.target.value)}
 						></input>
 						<div className="p-4 pt-8 flex flex-col justify-center text-lg">
 							<button
