@@ -40,7 +40,7 @@ def create_new_game():
     if form.validate_on_submit():
         data = form.data
         new_game = Game(user_id=current_user.get_id(), title=data['title'], description=data['description'],
-                        genre=data['genre'], developer=data['developer'], platform=data['platform'], preview_image=data['preview_image'])
+                        genre=data['genre'], developer=data['developer'], platform=data['platform'], preview_image=data['preview_image'], detail_image=data['detail_image'])
         form.populate_obj(new_game)
         db.session.add(new_game)
         db.session.commit()

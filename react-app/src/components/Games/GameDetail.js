@@ -89,7 +89,7 @@ const GameDetail = () => {
 									<p>{game.description}</p>
 								</div>
 							</div>
-							{/* {user.id === game.userId ? (
+							{user.id === game.userId ? (
 							<div className="flex flex-row w-1/6 justify-start w-max">
 								<button
 									className=" bg-purple-800 hover:bg-blue-700 text-white font-bold py-2 px-4"
@@ -104,7 +104,7 @@ const GameDetail = () => {
 									Delete
 								</button>
 							</div>
-						) : null} */}
+						) : null}
 
 							<div className="flex flex-col w-fit justify-center justify-items-center self-center text-5xl pb-5 pt-20">
 								Game Reviews
