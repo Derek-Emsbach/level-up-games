@@ -64,12 +64,12 @@ class Game(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('users.id')), nullable=False)
     title = db.Column(db.String(255), nullable=False)
-    preview_image = db.Column(db.String(10000), nullable=False)
-    description = db.Column(db.String(10000), nullable=False)
+    preview_image = db.Column(db.String(1000), nullable=False)
+    description = db.Column(db.String(1000), nullable=False)
     developer = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(255), nullable=False)
     platform = db.Column(db.String(255), nullable=False)
-    detail_image = db.Column(db.String(10000), nullable=True)
+    detail_image = db.Column(db.String(1000), nullable=True)
 
 
 
