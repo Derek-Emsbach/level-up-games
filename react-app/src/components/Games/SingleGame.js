@@ -62,7 +62,7 @@ const SingleGame = ({
 		<>
 			{title && (
 				<div
-					className="flex flex-col items-center justify-center content-center bg-slate-800 text-slate-200 rounded-3xl items-center w-3/5 h-70 p-8 pt-6 pb-8 m-5 hover:mb-2 hover:mt-2 border-2 hover:border-4 border-violet-900 hover:border-violet-500 hover:shadow-2xl hover:shadow-violet-800 opacity-85 hover:opacity-100"
+					className="h-100 flex flex-col items-center justify-center content-center bg-slate-800 text-slate-200 rounded-3xl items-center w-3/5 h-100 p-8 pt-6 pb-8 m-5 hover:mb-2 hover:mt-2 border-2 hover:border-4 border-violet-900 hover:border-violet-500 hover:shadow-2xl hover:shadow-violet-800 opacity-85 hover:opacity-100"
 					onMouseLeave={handleParentMouseLeave}
 				>
 					<div className="flex flex-col justify-center">
