@@ -5,14 +5,34 @@ from app.models import db, User, environment, SCHEMA
 def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    mario_dude47 = User(
+        username='mario_dude47', email='marnie@aa.io', password='password')
+    elden_lord95 = User(
+        username='elden_lord95', email='elden_lord95@aa.io', password='password')
+    las_plagus = User(
+        username='las_plagus', email='las_plagus@aa.io', password='password')
+    solid_snake = User(
+        username='solid_snake', email='solid_snake@aa.io', password='password')
+    peter_parker = User(
+        username='peter_parker', email='peter_parker@aa.io', password='password')
+    dovahkiin18 = User(
+        username='dovahkiin18', email='dovahkiin18@aa.io', password='password')
+    the_bandicoot = User(
+        username='the_bandicoot', email='the_bandicoot@aa.io', password='password')
+    mega_manX = User(
+        username='mega_manX', email='mega_manX@aa.io', password='password')
+
+
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(mario_dude47)
+    db.session.add(elden_lord95)
+    db.session.add(las_plagus)
+    db.session.add(solid_snake)
+    db.session.add(peter_parker)
+    db.session.add(dovahkiin18)
+    db.session.add(the_bandicoot)
+    db.session.add(mega_manX)
     db.session.commit()
 
 
