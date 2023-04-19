@@ -33,7 +33,8 @@ function HomePage() {
 
     history.push('/signup')
   }
-
+  	// It would be fun to add a description of the site and why to sign up
+	
 	return (
 		<div className="flex flex-col h-screen bg-gradient-to-r from-sky-600 to-purple-900">
 			<div className="flex flex-row justify-center p-20">

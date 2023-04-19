@@ -26,7 +26,10 @@ const ReviewByUserId = ({ users, review }) => {
 
 	return (
         <>
+            {users && (
+
             <h1>{setUserReviewer}'s Review</h1>
+            )}
         </>
 
     )
